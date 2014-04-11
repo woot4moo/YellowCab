@@ -7,6 +7,10 @@
 package yellowcab;
 
 
+import java.util.Map;
+import java.util.HashMap;
+import org.apache.thrift.TEnum;
+
 /**
  * Represents the TAXII specific message body types.
  * 
@@ -87,7 +91,7 @@ public enum MessageBodyType implements org.apache.thrift.TEnum {
    */
   POLL_RESPONSE(9),
   /**
-   *  A TAXII Status Message is used to indicate a condition of success or error. Status Messages are always
+   *   A TAXII Status Message is used to indicate a condition of success or error. Status Messages are always
    *   sent from a TAXII Daemon to a TAXII Client in response to a TAXII Message. A TAXII Status Message can
    *   be used to indicate that an error occurred when processing a received TAXII Message. Error conditions
    *   can occur because the request itself was invalid or because the recipient was unwilling or unable to

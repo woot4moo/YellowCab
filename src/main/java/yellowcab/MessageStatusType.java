@@ -7,6 +7,10 @@
 package yellowcab;
 
 
+import java.util.Map;
+import java.util.HashMap;
+import org.apache.thrift.TEnum;
+
 /**
  * All binding information taken from: http://taxii.mitre.org/specifications/version1.1/TAXII_Services_Specification.pdf
  * 

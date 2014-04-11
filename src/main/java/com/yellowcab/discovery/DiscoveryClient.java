@@ -6,7 +6,10 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
+import yellowcab.DiscoveryRequest;
+import yellowcab.DiscoveryResponse;
 import yellowcab.DiscoveryService;
+import yellowcab.MessageBodyType;
 import yellowcab.Service;
 
 import java.util.Set;
@@ -30,8 +33,8 @@ public class DiscoveryClient {
             TProtocol protocol = new TBinaryProtocol(transport);
            DiscoveryService.Client client = new DiscoveryService.Client(protocol);
 
-            perform(client);
-
+            //perform(client);
+            sendMessage(client);
             transport.close();
         } catch (TException x) {
             x.printStackTrace();
@@ -43,4 +46,10 @@ public class DiscoveryClient {
         System.out.println(services + " services!");
     }
 
+    private static void sendMessage(DiscoveryService.Client client) throws TException{
+        DiscoveryRequest request = new DiscoveryRequest();
+        request.setMessageType(MessageBodyType.INBOX_MESSAGE);
+        DiscoveryResponse response = client.makeRequest(request);
+        System.out.println("Response: " + response);
+    }
 }

@@ -260,16 +260,59 @@ struct MessageStatus{
     **/
     4: required list<MessageStatusDetail> statusDetails;
 }
+
 struct StatusMessage{
     1: required MessageStatus messageStatus;
     2: required MessageBodyType bodyType;
 }
 
+
+/**
+* A wrapper for TAXII compliant requests
+**/
+struct TAXIIRequest{
+    1: required MessageBodyType messageType;
+}
+
+/**
+* A wrapper for TAXII compliant requests
+**/
+struct TAXIIResponse{
+    1: required MessageStatusType status;
+}
+
+/**
+* To be used by the Discovery Daemon requests
+**/
+struct DiscoveryRequest{
+    1: required MessageBodyType messageType = MessageBodyType.DISCOVERY_REQUEST;
+}
+
+
+/**
+  If the Discovery Daemon detects an error that prevents processing of the message then it MUST respond with an
+  appropriate Status Message indicating that the exchange failed. Otherwise, the Discovery Daemon
+  passes the relevant information to its TAXII Back-end. The TAXII Back-end uses this information, along
+  with its own access control policy, to create a list of TAXII Services to be returned or determine that the
+  request will not be fulfilled. (E.g., the request might be denied due to a lack of authorization on the part
+  of the requester.) If the request is honored, a list of TAXII Services is packaged into a Discovery Response
+  which is sent back to the TAXII Client. (Not that this list might be 0-length if there are no services the
+  requester is permitted to see.) The TAXII Client receives this message and passes the information to its
+  own TAXII Back-end for processing. If the Discovery Daemon does not respond with a Discovery
+  Response for any reason, the Discovery Daemon MUST respond with a Status Message indicating the
+  reason that prevented it from returning a successful response. A TAXII Status Message MUST only be
+  returned to indicate an error occurred or that the request was denied
+**/
+struct DiscoveryResponse{
+    1: optional MessageStatusType status;
+    2: optional list<Service> allowedServices;
+}
 /**
  * Responsible for TAXII discovery specification as detailed in section 2.1.1 of
  * http://taxii.mitre.org/specifications/version1.1/TAXII_Services_Specification.pdf
 **/
 service DiscoveryService{
     set<Service> knownServices(),
+    DiscoveryResponse makeRequest(1: DiscoveryRequest request);
 }
 
