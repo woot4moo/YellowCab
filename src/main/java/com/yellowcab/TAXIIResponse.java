@@ -4,48 +4,62 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
-import org.apache.thrift.protocol.TTupleProtocol;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
-import org.apache.thrift.scheme.TupleScheme;
 
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
+import org.apache.thrift.scheme.TupleScheme;
+import org.apache.thrift.protocol.TTupleProtocol;
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
+import org.apache.thrift.async.AsyncMethodCallback;
+import org.apache.thrift.server.AbstractNonblockingServer.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.EnumSet;
+import java.util.Collections;
+import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * To be used by the Discovery Daemon requests
+ * A wrapper for TAXII compliant requests
  * 
  */
-public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryRequest, DiscoveryRequest._Fields>, java.io.Serializable, Cloneable, Comparable<DiscoveryRequest> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("DiscoveryRequest");
+public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAXIIResponse._Fields>, java.io.Serializable, Cloneable, Comparable<TAXIIResponse> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("TAXIIResponse");
 
-  private static final org.apache.thrift.protocol.TField MESSAGE_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("messageType", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)1);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new DiscoveryRequestStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new DiscoveryRequestTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new TAXIIResponseStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new TAXIIResponseTupleSchemeFactory());
   }
 
   /**
    * 
-   * @see MessageBodyType
+   * @see MessageStatusType
    */
-  public MessageBodyType messageType; // required
+  public MessageStatusType status; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     /**
      * 
-     * @see MessageBodyType
+     * @see MessageStatusType
      */
-    MESSAGE_TYPE((short)1, "messageType");
+    STATUS((short)1, "status");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -60,8 +74,8 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // MESSAGE_TYPE
-          return MESSAGE_TYPE;
+        case 1: // STATUS
+          return STATUS;
         default:
           return null;
       }
@@ -105,82 +119,79 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.MESSAGE_TYPE, new org.apache.thrift.meta_data.FieldMetaData("messageType", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageBodyType.class)));
+    tmpMap.put(_Fields.STATUS, new org.apache.thrift.meta_data.FieldMetaData("status", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageStatusType.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(DiscoveryRequest.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(TAXIIResponse.class, metaDataMap);
   }
 
-  public DiscoveryRequest() {
-    this.messageType = MessageBodyType.DISCOVERY_REQUEST;
-
+  public TAXIIResponse() {
   }
 
-  public DiscoveryRequest(
-    MessageBodyType messageType)
+  public TAXIIResponse(
+    MessageStatusType status)
   {
     this();
-    this.messageType = messageType;
+    this.status = status;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public DiscoveryRequest(DiscoveryRequest other) {
-    if (other.isSetMessageType()) {
-      this.messageType = other.messageType;
+  public TAXIIResponse(TAXIIResponse other) {
+    if (other.isSetStatus()) {
+      this.status = other.status;
     }
   }
 
-  public DiscoveryRequest deepCopy() {
-    return new DiscoveryRequest(this);
+  public TAXIIResponse deepCopy() {
+    return new TAXIIResponse(this);
   }
 
   @Override
   public void clear() {
-    this.messageType = MessageBodyType.DISCOVERY_REQUEST;
-
+    this.status = null;
   }
 
   /**
    * 
-   * @see MessageBodyType
+   * @see MessageStatusType
    */
-  public MessageBodyType getMessageType() {
-    return this.messageType;
+  public MessageStatusType getStatus() {
+    return this.status;
   }
 
   /**
    * 
-   * @see MessageBodyType
+   * @see MessageStatusType
    */
-  public DiscoveryRequest setMessageType(MessageBodyType messageType) {
-    this.messageType = messageType;
+  public TAXIIResponse setStatus(MessageStatusType status) {
+    this.status = status;
     return this;
   }
 
-  public void unsetMessageType() {
-    this.messageType = null;
+  public void unsetStatus() {
+    this.status = null;
   }
 
-  /** Returns true if field messageType is set (has been assigned a value) and false otherwise */
-  public boolean isSetMessageType() {
-    return this.messageType != null;
+  /** Returns true if field status is set (has been assigned a value) and false otherwise */
+  public boolean isSetStatus() {
+    return this.status != null;
   }
 
-  public void setMessageTypeIsSet(boolean value) {
+  public void setStatusIsSet(boolean value) {
     if (!value) {
-      this.messageType = null;
+      this.status = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case MESSAGE_TYPE:
+    case STATUS:
       if (value == null) {
-        unsetMessageType();
+        unsetStatus();
       } else {
-        setMessageType((MessageBodyType)value);
+        setStatus((MessageStatusType)value);
       }
       break;
 
@@ -189,8 +200,8 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case MESSAGE_TYPE:
-      return getMessageType();
+    case STATUS:
+      return getStatus();
 
     }
     throw new IllegalStateException();
@@ -203,8 +214,8 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
     }
 
     switch (field) {
-    case MESSAGE_TYPE:
-      return isSetMessageType();
+    case STATUS:
+      return isSetStatus();
     }
     throw new IllegalStateException();
   }
@@ -213,21 +224,21 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof DiscoveryRequest)
-      return this.equals((DiscoveryRequest)that);
+    if (that instanceof TAXIIResponse)
+      return this.equals((TAXIIResponse)that);
     return false;
   }
 
-  public boolean equals(DiscoveryRequest that) {
+  public boolean equals(TAXIIResponse that) {
     if (that == null)
       return false;
 
-    boolean this_present_messageType = true && this.isSetMessageType();
-    boolean that_present_messageType = true && that.isSetMessageType();
-    if (this_present_messageType || that_present_messageType) {
-      if (!(this_present_messageType && that_present_messageType))
+    boolean this_present_status = true && this.isSetStatus();
+    boolean that_present_status = true && that.isSetStatus();
+    if (this_present_status || that_present_status) {
+      if (!(this_present_status && that_present_status))
         return false;
-      if (!this.messageType.equals(that.messageType))
+      if (!this.status.equals(that.status))
         return false;
     }
 
@@ -240,19 +251,19 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
   }
 
   @Override
-  public int compareTo(DiscoveryRequest other) {
+  public int compareTo(TAXIIResponse other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetMessageType()).compareTo(other.isSetMessageType());
+    lastComparison = Boolean.valueOf(isSetStatus()).compareTo(other.isSetStatus());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMessageType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.messageType, other.messageType);
+    if (isSetStatus()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.status, other.status);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -274,14 +285,14 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("DiscoveryRequest(");
+    StringBuilder sb = new StringBuilder("TAXIIResponse(");
     boolean first = true;
 
-    sb.append("messageType:");
-    if (this.messageType == null) {
+    sb.append("status:");
+    if (this.status == null) {
       sb.append("null");
     } else {
-      sb.append(this.messageType);
+      sb.append(this.status);
     }
     first = false;
     sb.append(")");
@@ -290,8 +301,8 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (messageType == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'messageType' was not present! Struct: " + toString());
+    if (status == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'status' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -312,15 +323,15 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
     }
   }
 
-  private static class DiscoveryRequestStandardSchemeFactory implements SchemeFactory {
-    public DiscoveryRequestStandardScheme getScheme() {
-      return new DiscoveryRequestStandardScheme();
+  private static class TAXIIResponseStandardSchemeFactory implements SchemeFactory {
+    public TAXIIResponseStandardScheme getScheme() {
+      return new TAXIIResponseStandardScheme();
     }
   }
 
-  private static class DiscoveryRequestStandardScheme extends StandardScheme<DiscoveryRequest> {
+  private static class TAXIIResponseStandardScheme extends StandardScheme<TAXIIResponse> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, DiscoveryRequest struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, TAXIIResponse struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -330,10 +341,10 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
           break;
         }
         switch (schemeField.id) {
-          case 1: // MESSAGE_TYPE
+          case 1: // STATUS
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.messageType = MessageBodyType.findByValue(iprot.readI32());
-              struct.setMessageTypeIsSet(true);
+              struct.status = MessageStatusType.findByValue(iprot.readI32());
+              struct.setStatusIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -349,13 +360,13 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, DiscoveryRequest struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, TAXIIResponse struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.messageType != null) {
-        oprot.writeFieldBegin(MESSAGE_TYPE_FIELD_DESC);
-        oprot.writeI32(struct.messageType.getValue());
+      if (struct.status != null) {
+        oprot.writeFieldBegin(STATUS_FIELD_DESC);
+        oprot.writeI32(struct.status.getValue());
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -364,25 +375,25 @@ public class DiscoveryRequest implements org.apache.thrift.TBase<DiscoveryReques
 
   }
 
-  private static class DiscoveryRequestTupleSchemeFactory implements SchemeFactory {
-    public DiscoveryRequestTupleScheme getScheme() {
-      return new DiscoveryRequestTupleScheme();
+  private static class TAXIIResponseTupleSchemeFactory implements SchemeFactory {
+    public TAXIIResponseTupleScheme getScheme() {
+      return new TAXIIResponseTupleScheme();
     }
   }
 
-  private static class DiscoveryRequestTupleScheme extends TupleScheme<DiscoveryRequest> {
+  private static class TAXIIResponseTupleScheme extends TupleScheme<TAXIIResponse> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, DiscoveryRequest struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, TAXIIResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeI32(struct.messageType.getValue());
+      oprot.writeI32(struct.status.getValue());
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, DiscoveryRequest struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, TAXIIResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.messageType = MessageBodyType.findByValue(iprot.readI32());
-      struct.setMessageTypeIsSet(true);
+      struct.status = MessageStatusType.findByValue(iprot.readI32());
+      struct.setStatusIsSet(true);
     }
   }
 

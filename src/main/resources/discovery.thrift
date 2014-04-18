@@ -2,14 +2,142 @@ namespace java com.yellowcab
 namespace py com.yellowcab
 
 /**
-* Represents a service that can be discovered
+* Represents a message that is TAXII compliant.
 **/
-struct Service{
-    1: required string serviceName;
-    2: required string address;
-    3: required i16 port;
-    4: required bool isActive;
+struct Message{
+    1: required string id;
+    2: required string inResponseTo;
 }
+
+
+struct InboxServiceContent{
+/**
+* This field identifies content binding subtypes of the specified
+  Content Binding. Each Subtype MUST be a Content Binding
+  Subtype ID as defined in the TAXII Content Binding
+  Reference or by a third party. Absence of this field indicates
+  that the Inbox Service accepts all subtypes of the specified
+  Content Binding.
+
+**/
+    1: required list<string> subtypes;
+}
+
+
+
+/**
+* A TAXII query
+**/
+struct Query{
+/**
+* This field contains the Query Format ID that identifies the
+  format of the Supported Query.
+
+**/
+    1: required string formatId;
+}
+
+
+/**
+* Represents known service types
+**/
+enum ServiceType{
+    COLLECTION_MANAGEMENT
+    DISCOVERY,
+    INBOX,
+    POLL
+}
+
+/**
+* Represents a service as defined by the TAXII specification.
+**/
+struct ServiceInstance{
+/**
+* This field MAY appear any number of times (including 0),
+  each time identifying a different instance of a TAXII Service.
+  This field has several sub-fields. Absence of this field
+  indicates that there are no TAXII Services that can be
+  revealed to the requester
+**/
+    1: required ServiceType serviceType;
+    /**
+    * This field identifies the TAXII Services Specification to which
+      this Service conforms. This MUST be a TAXII Services Version
+      ID as defined in a TAXII Services Specification.
+    **/
+    2: required string serviceVersion;
+    /**
+    * This field identifies the protocol binding supported by this
+      Service. This MUST be a TAXII Protocol Binding Version ID as
+      defined in a TAXII Protocol Binding Specification or by a third
+      party
+**/
+    3: required string protocolBinding;
+    /**
+    * This field identifies the network address that can be used to
+      contact TAXII Daemon that hosts this Service. The Service
+      Address MUST use a format appropriate to the Protocol
+      Binding field value.
+    **/
+    4: required string serviceAddress;
+    /**
+    * This field identifies the message bindings supported by this
+      Service instance. Each message binding MUST be a TAXII
+      Message Binding Version ID as defined in a TAXII Message
+      Binding Specification or by a third party.
+**/
+    5: required list<string> messageBindings;
+    /**
+    * This field indicates that the service supports a particular
+      format of Query expression. This field SHOULD NOT be
+      present for any Service Type other than Collection
+      Management Service or Poll Service; recipients MUST ignore
+      this field for other Service Types. The Query Format subfield
+      identifies the type of query format supported. Other
+      subfields MAY also be present and provide additional
+      support information about the indicated query format -
+      these parameters are identified in the definition of the given
+      query format. (See Section 5.5 for more on Query Format
+      definition.) Multiple instances of this field may appear, but
+      each instance MUST include a different Query Format value.
+      Absence of this field indicates that the identified service
+      does not support the use of Query expressions
+**/
+    6: optional list<Query> supportedQueries;
+    /**
+    * This field SHOULD NOT be present for any Service Type other
+      than Inbox; recipients MUST ignore this field if the Service
+      Type is not Inbox. This field identifies content bindings that
+      this Inbox Service is willing to accept. Each Inbox Service
+      Accepted Content MUST be a Content Binding ID as defined
+      in the TAXII Content Binding Reference or by a third party.
+      Absence of this field when the Service Type field indicates an
+      Inbox Service means that the Inbox Service accepts all
+      content bindings.
+
+**/
+    7: optional list<InboxServiceContent> inboxServiceAcceptedContents;
+    /**
+    * This field indicates whether the identity of the requester
+      (authenticated or otherwise) is allowed to access this TAXII
+      Service. This field can indicate that the requester is known to
+      have access, known not to have access, or that access is
+      unknown. Absence of this field indicates that access is
+      unknown.
+
+**/
+    8: optional bool isAvailable;
+    /**
+    * This field contains a message regarding this Service instance.
+      This message is not required to be machine readable and is
+      usually a message for a human operator.
+
+**/
+    9: optional Message message;
+}
+
+
+
 
 /**
 * Represents the TAXII specific message body types.
@@ -93,13 +221,7 @@ enum MessageBodyType{
 
 }
 
-/**
-* Represents a message that is TAXII compliant.
-**/
-struct Message{
-    1: required string id;
-    2: required string inResponseTo;
-}
+
 
 /**
 * Response detail types for MessageStatusType
@@ -282,7 +404,11 @@ struct TAXIIResponse{
 }
 
 /**
-* To be used by the Discovery Daemon requests
+* This message is sent to a Discovery Service to request information about provided TAXII Services. Such
+  information includes what TAXII Services are offered, how the TAXII Daemons that support those
+  Services can be accessed, and what protocols and message bindings are supported. The body of this
+  message is empty.
+
 **/
 struct DiscoveryRequest{
     1: required MessageBodyType messageType = MessageBodyType.DISCOVERY_REQUEST;
@@ -305,14 +431,48 @@ struct DiscoveryRequest{
 **/
 struct DiscoveryResponse{
     1: optional MessageStatusType status;
-    2: optional list<Service> allowedServices;
+    2: optional list<ServiceInstance> allowedServices;
 }
+
+/**
+* This message is sent to a Collection Management Service to request information about the available
+  TAXII Data Collections. The body of this message is empty.
+
+**/
+struct CollectionInformationRequest{
+    1: required MessageBodyType messageType = MessageBodyType.COLLECTION_INFORMATION_REQUEST;
+}
+
+
+
+
+
+
+/**
+* This message is sent from a Discovery Service in response to a TAXII Discovery Request if the request is
+  successful. If there is an error condition, a TAXII Status Message indicating the nature of the error is sent
+  instead.
+
+**/
+struct DiscoveryResponseMessage{
+/**
+* This field MAY appear any number of times (including 0),
+  each time identifying a different instance of a TAXII Service.
+  This field has several sub-fields. Absence of this field
+  indicates that there are no TAXII Services that can be
+  revealed to the requester.
+
+**/
+    1: optional list<ServiceInstance> serviceInstances;
+
+}
+
 /**
  * Responsible for TAXII discovery specification as detailed in section 2.1.1 of
  * http://taxii.mitre.org/specifications/version1.1/TAXII_Services_Specification.pdf
 **/
 service DiscoveryService{
-    set<Service> knownServices(),
+    set<ServiceInstance> knownServices(),
     DiscoveryResponse makeRequest(1: DiscoveryRequest request);
 }
 

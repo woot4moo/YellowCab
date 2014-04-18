@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -33,33 +33,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A wrapper for TAXII compliant requests
+ * A TAXII query
  * 
  */
-public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAXIIResponse._Fields>, java.io.Serializable, Cloneable, Comparable<TAXIIResponse> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("TAXIIResponse");
+public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, java.io.Serializable, Cloneable, Comparable<Query> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Query");
 
-  private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField FORMAT_IDS_FIELD_DESC = new org.apache.thrift.protocol.TField("formatIds", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new TAXIIResponseStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new TAXIIResponseTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new QueryStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new QueryTupleSchemeFactory());
   }
 
   /**
+   * * This field contains the Query Format ID that identifies the
+   *   format of the Supported Query.
    * 
-   * @see MessageStatusType
+   * *
    */
-  public MessageStatusType status; // required
+  public String formatIds; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     /**
+     * * This field contains the Query Format ID that identifies the
+     *   format of the Supported Query.
      * 
-     * @see MessageStatusType
+     * *
      */
-    STATUS((short)1, "status");
+    FORMAT_IDS((short)1, "formatIds");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -74,8 +78,8 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // STATUS
-          return STATUS;
+        case 1: // FORMAT_IDS
+          return FORMAT_IDS;
         default:
           return null;
       }
@@ -119,79 +123,83 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.STATUS, new org.apache.thrift.meta_data.FieldMetaData("status", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageStatusType.class)));
+    tmpMap.put(_Fields.FORMAT_IDS, new org.apache.thrift.meta_data.FieldMetaData("formatIds", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(TAXIIResponse.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Query.class, metaDataMap);
   }
 
-  public TAXIIResponse() {
+  public Query() {
   }
 
-  public TAXIIResponse(
-    MessageStatusType status)
+  public Query(
+    String formatIds)
   {
     this();
-    this.status = status;
+    this.formatIds = formatIds;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public TAXIIResponse(TAXIIResponse other) {
-    if (other.isSetStatus()) {
-      this.status = other.status;
+  public Query(Query other) {
+    if (other.isSetFormatIds()) {
+      this.formatIds = other.formatIds;
     }
   }
 
-  public TAXIIResponse deepCopy() {
-    return new TAXIIResponse(this);
+  public Query deepCopy() {
+    return new Query(this);
   }
 
   @Override
   public void clear() {
-    this.status = null;
+    this.formatIds = null;
   }
 
   /**
+   * * This field contains the Query Format ID that identifies the
+   *   format of the Supported Query.
    * 
-   * @see MessageStatusType
+   * *
    */
-  public MessageStatusType getStatus() {
-    return this.status;
+  public String getFormatIds() {
+    return this.formatIds;
   }
 
   /**
+   * * This field contains the Query Format ID that identifies the
+   *   format of the Supported Query.
    * 
-   * @see MessageStatusType
+   * *
    */
-  public TAXIIResponse setStatus(MessageStatusType status) {
-    this.status = status;
+  public Query setFormatIds(String formatIds) {
+    this.formatIds = formatIds;
     return this;
   }
 
-  public void unsetStatus() {
-    this.status = null;
+  public void unsetFormatIds() {
+    this.formatIds = null;
   }
 
-  /** Returns true if field status is set (has been assigned a value) and false otherwise */
-  public boolean isSetStatus() {
-    return this.status != null;
+  /** Returns true if field formatIds is set (has been assigned a value) and false otherwise */
+  public boolean isSetFormatIds() {
+    return this.formatIds != null;
   }
 
-  public void setStatusIsSet(boolean value) {
+  public void setFormatIdsIsSet(boolean value) {
     if (!value) {
-      this.status = null;
+      this.formatIds = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case STATUS:
+    case FORMAT_IDS:
       if (value == null) {
-        unsetStatus();
+        unsetFormatIds();
       } else {
-        setStatus((MessageStatusType)value);
+        setFormatIds((String)value);
       }
       break;
 
@@ -200,8 +208,8 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case STATUS:
-      return getStatus();
+    case FORMAT_IDS:
+      return getFormatIds();
 
     }
     throw new IllegalStateException();
@@ -214,8 +222,8 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
     }
 
     switch (field) {
-    case STATUS:
-      return isSetStatus();
+    case FORMAT_IDS:
+      return isSetFormatIds();
     }
     throw new IllegalStateException();
   }
@@ -224,21 +232,21 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof TAXIIResponse)
-      return this.equals((TAXIIResponse)that);
+    if (that instanceof Query)
+      return this.equals((Query)that);
     return false;
   }
 
-  public boolean equals(TAXIIResponse that) {
+  public boolean equals(Query that) {
     if (that == null)
       return false;
 
-    boolean this_present_status = true && this.isSetStatus();
-    boolean that_present_status = true && that.isSetStatus();
-    if (this_present_status || that_present_status) {
-      if (!(this_present_status && that_present_status))
+    boolean this_present_formatIds = true && this.isSetFormatIds();
+    boolean that_present_formatIds = true && that.isSetFormatIds();
+    if (this_present_formatIds || that_present_formatIds) {
+      if (!(this_present_formatIds && that_present_formatIds))
         return false;
-      if (!this.status.equals(that.status))
+      if (!this.formatIds.equals(that.formatIds))
         return false;
     }
 
@@ -251,19 +259,19 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
   }
 
   @Override
-  public int compareTo(TAXIIResponse other) {
+  public int compareTo(Query other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetStatus()).compareTo(other.isSetStatus());
+    lastComparison = Boolean.valueOf(isSetFormatIds()).compareTo(other.isSetFormatIds());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetStatus()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.status, other.status);
+    if (isSetFormatIds()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.formatIds, other.formatIds);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -285,14 +293,14 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("TAXIIResponse(");
+    StringBuilder sb = new StringBuilder("Query(");
     boolean first = true;
 
-    sb.append("status:");
-    if (this.status == null) {
+    sb.append("formatIds:");
+    if (this.formatIds == null) {
       sb.append("null");
     } else {
-      sb.append(this.status);
+      sb.append(this.formatIds);
     }
     first = false;
     sb.append(")");
@@ -301,8 +309,8 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (status == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'status' was not present! Struct: " + toString());
+    if (formatIds == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'formatIds' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -323,15 +331,15 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
     }
   }
 
-  private static class TAXIIResponseStandardSchemeFactory implements SchemeFactory {
-    public TAXIIResponseStandardScheme getScheme() {
-      return new TAXIIResponseStandardScheme();
+  private static class QueryStandardSchemeFactory implements SchemeFactory {
+    public QueryStandardScheme getScheme() {
+      return new QueryStandardScheme();
     }
   }
 
-  private static class TAXIIResponseStandardScheme extends StandardScheme<TAXIIResponse> {
+  private static class QueryStandardScheme extends StandardScheme<Query> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, TAXIIResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, Query struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -341,10 +349,10 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
           break;
         }
         switch (schemeField.id) {
-          case 1: // STATUS
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.status = MessageStatusType.findByValue(iprot.readI32());
-              struct.setStatusIsSet(true);
+          case 1: // FORMAT_IDS
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.formatIds = iprot.readString();
+              struct.setFormatIdsIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -360,13 +368,13 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, TAXIIResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, Query struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.status != null) {
-        oprot.writeFieldBegin(STATUS_FIELD_DESC);
-        oprot.writeI32(struct.status.getValue());
+      if (struct.formatIds != null) {
+        oprot.writeFieldBegin(FORMAT_IDS_FIELD_DESC);
+        oprot.writeString(struct.formatIds);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -375,25 +383,25 @@ public class TAXIIResponse implements org.apache.thrift.TBase<TAXIIResponse, TAX
 
   }
 
-  private static class TAXIIResponseTupleSchemeFactory implements SchemeFactory {
-    public TAXIIResponseTupleScheme getScheme() {
-      return new TAXIIResponseTupleScheme();
+  private static class QueryTupleSchemeFactory implements SchemeFactory {
+    public QueryTupleScheme getScheme() {
+      return new QueryTupleScheme();
     }
   }
 
-  private static class TAXIIResponseTupleScheme extends TupleScheme<TAXIIResponse> {
+  private static class QueryTupleScheme extends TupleScheme<Query> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, TAXIIResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, Query struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeI32(struct.status.getValue());
+      oprot.writeString(struct.formatIds);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, TAXIIResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, Query struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.status = MessageStatusType.findByValue(iprot.readI32());
-      struct.setStatusIsSet(true);
+      struct.formatIds = iprot.readString();
+      struct.setFormatIdsIsSet(true);
     }
   }
 

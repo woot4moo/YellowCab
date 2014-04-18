@@ -4,27 +4,33 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
-import org.apache.thrift.TException;
-import org.apache.thrift.async.AsyncMethodCallback;
-import org.apache.thrift.protocol.TTupleProtocol;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
+
 import org.apache.thrift.scheme.TupleScheme;
-import org.apache.thrift.server.AbstractNonblockingServer.AsyncFrameBuffer;
+import org.apache.thrift.protocol.TTupleProtocol;
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
+import org.apache.thrift.async.AsyncMethodCallback;
+import org.apache.thrift.server.AbstractNonblockingServer.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.EnumSet;
+import java.util.Collections;
+import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 public class DiscoveryService {
 
@@ -35,7 +41,7 @@ public class DiscoveryService {
    */
   public interface Iface {
 
-    public Set<Service> knownServices() throws org.apache.thrift.TException;
+    public Set<ServiceInstance> knownServices() throws org.apache.thrift.TException;
 
     public DiscoveryResponse makeRequest(DiscoveryRequest request) throws org.apache.thrift.TException;
 
@@ -69,7 +75,7 @@ public class DiscoveryService {
       super(iprot, oprot);
     }
 
-    public Set<Service> knownServices() throws org.apache.thrift.TException
+    public Set<ServiceInstance> knownServices() throws org.apache.thrift.TException
     {
       send_knownServices();
       return recv_knownServices();
@@ -81,7 +87,7 @@ public class DiscoveryService {
       sendBase("knownServices", args);
     }
 
-    public Set<Service> recv_knownServices() throws org.apache.thrift.TException
+    public Set<ServiceInstance> recv_knownServices() throws org.apache.thrift.TException
     {
       knownServices_result result = new knownServices_result();
       receiveBase(result, "knownServices");
@@ -151,7 +157,7 @@ public class DiscoveryService {
         prot.writeMessageEnd();
       }
 
-      public Set<Service> getResult() throws org.apache.thrift.TException {
+      public Set<ServiceInstance> getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -269,7 +275,7 @@ public class DiscoveryService {
       return processMap;
     }
 
-    public static class knownServices<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, knownServices_args, Set<Service>> {
+    public static class knownServices<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, knownServices_args, Set<ServiceInstance>> {
       public knownServices() {
         super("knownServices");
       }
@@ -278,10 +284,10 @@ public class DiscoveryService {
         return new knownServices_args();
       }
 
-      public AsyncMethodCallback<Set<Service>> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
+      public AsyncMethodCallback<Set<ServiceInstance>> getResultHandler(final AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
-        return new AsyncMethodCallback<Set<Service>>() { 
-          public void onComplete(Set<Service> o) {
+        return new AsyncMethodCallback<Set<ServiceInstance>>() { 
+          public void onComplete(Set<ServiceInstance> o) {
             knownServices_result result = new knownServices_result();
             result.success = o;
             try {
@@ -315,7 +321,7 @@ public class DiscoveryService {
         return false;
       }
 
-      public void start(I iface, knownServices_args args, org.apache.thrift.async.AsyncMethodCallback<Set<Service>> resultHandler) throws TException {
+      public void start(I iface, knownServices_args args, org.apache.thrift.async.AsyncMethodCallback<Set<ServiceInstance>> resultHandler) throws TException {
         iface.knownServices(resultHandler);
       }
     }
@@ -630,7 +636,7 @@ public class DiscoveryService {
       schemes.put(TupleScheme.class, new knownServices_resultTupleSchemeFactory());
     }
 
-    public Set<Service> success; // required
+    public Set<ServiceInstance> success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -696,7 +702,7 @@ public class DiscoveryService {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.SetMetaData(org.apache.thrift.protocol.TType.SET, 
-              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Service.class))));
+              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ServiceInstance.class))));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(knownServices_result.class, metaDataMap);
     }
@@ -705,7 +711,7 @@ public class DiscoveryService {
     }
 
     public knownServices_result(
-      Set<Service> success)
+      Set<ServiceInstance> success)
     {
       this();
       this.success = success;
@@ -716,9 +722,9 @@ public class DiscoveryService {
      */
     public knownServices_result(knownServices_result other) {
       if (other.isSetSuccess()) {
-        Set<Service> __this__success = new HashSet<Service>(other.success.size());
-        for (Service other_element : other.success) {
-          __this__success.add(new Service(other_element));
+        Set<ServiceInstance> __this__success = new HashSet<ServiceInstance>(other.success.size());
+        for (ServiceInstance other_element : other.success) {
+          __this__success.add(new ServiceInstance(other_element));
         }
         this.success = __this__success;
       }
@@ -737,22 +743,22 @@ public class DiscoveryService {
       return (this.success == null) ? 0 : this.success.size();
     }
 
-    public java.util.Iterator<Service> getSuccessIterator() {
+    public java.util.Iterator<ServiceInstance> getSuccessIterator() {
       return (this.success == null) ? null : this.success.iterator();
     }
 
-    public void addToSuccess(Service elem) {
+    public void addToSuccess(ServiceInstance elem) {
       if (this.success == null) {
-        this.success = new HashSet<Service>();
+        this.success = new HashSet<ServiceInstance>();
       }
       this.success.add(elem);
     }
 
-    public Set<Service> getSuccess() {
+    public Set<ServiceInstance> getSuccess() {
       return this.success;
     }
 
-    public knownServices_result setSuccess(Set<Service> success) {
+    public knownServices_result setSuccess(Set<ServiceInstance> success) {
       this.success = success;
       return this;
     }
@@ -778,7 +784,7 @@ public class DiscoveryService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((Set<Service>)value);
+          setSuccess((Set<ServiceInstance>)value);
         }
         break;
 
@@ -928,14 +934,14 @@ public class DiscoveryService {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
                 {
-                  org.apache.thrift.protocol.TSet _set16 = iprot.readSetBegin();
-                  struct.success = new HashSet<Service>(2*_set16.size);
-                  for (int _i17 = 0; _i17 < _set16.size; ++_i17)
+                  org.apache.thrift.protocol.TSet _set56 = iprot.readSetBegin();
+                  struct.success = new HashSet<ServiceInstance>(2*_set56.size);
+                  for (int _i57 = 0; _i57 < _set56.size; ++_i57)
                   {
-                    Service _elem18;
-                    _elem18 = new Service();
-                    _elem18.read(iprot);
-                    struct.success.add(_elem18);
+                    ServiceInstance _elem58;
+                    _elem58 = new ServiceInstance();
+                    _elem58.read(iprot);
+                    struct.success.add(_elem58);
                   }
                   iprot.readSetEnd();
                 }
@@ -963,9 +969,9 @@ public class DiscoveryService {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (Service _iter19 : struct.success)
+            for (ServiceInstance _iter59 : struct.success)
             {
-              _iter19.write(oprot);
+              _iter59.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -996,9 +1002,9 @@ public class DiscoveryService {
         if (struct.isSetSuccess()) {
           {
             oprot.writeI32(struct.success.size());
-            for (Service _iter20 : struct.success)
+            for (ServiceInstance _iter60 : struct.success)
             {
-              _iter20.write(oprot);
+              _iter60.write(oprot);
             }
           }
         }
@@ -1010,14 +1016,14 @@ public class DiscoveryService {
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TSet _set21 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new HashSet<Service>(2*_set21.size);
-            for (int _i22 = 0; _i22 < _set21.size; ++_i22)
+            org.apache.thrift.protocol.TSet _set61 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+            struct.success = new HashSet<ServiceInstance>(2*_set61.size);
+            for (int _i62 = 0; _i62 < _set61.size; ++_i62)
             {
-              Service _elem23;
-              _elem23 = new Service();
-              _elem23.read(iprot);
-              struct.success.add(_elem23);
+              ServiceInstance _elem63;
+              _elem63 = new ServiceInstance();
+              _elem63.read(iprot);
+              struct.success.add(_elem63);
             }
           }
           struct.setSuccessIsSet(true);

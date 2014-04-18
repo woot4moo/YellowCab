@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -64,7 +64,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
    * @see MessageStatusType
    */
   public MessageStatusType status; // optional
-  public List<Service> allowedServices; // optional
+  public List<ServiceInstance> allowedServices; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -140,7 +140,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageStatusType.class)));
     tmpMap.put(_Fields.ALLOWED_SERVICES, new org.apache.thrift.meta_data.FieldMetaData("allowedServices", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-            new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Service.class))));
+            new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ServiceInstance.class))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(DiscoveryResponse.class, metaDataMap);
   }
@@ -156,9 +156,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       this.status = other.status;
     }
     if (other.isSetAllowedServices()) {
-      List<Service> __this__allowedServices = new ArrayList<Service>(other.allowedServices.size());
-      for (Service other_element : other.allowedServices) {
-        __this__allowedServices.add(new Service(other_element));
+      List<ServiceInstance> __this__allowedServices = new ArrayList<ServiceInstance>(other.allowedServices.size());
+      for (ServiceInstance other_element : other.allowedServices) {
+        __this__allowedServices.add(new ServiceInstance(other_element));
       }
       this.allowedServices = __this__allowedServices;
     }
@@ -210,22 +210,22 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     return (this.allowedServices == null) ? 0 : this.allowedServices.size();
   }
 
-  public java.util.Iterator<Service> getAllowedServicesIterator() {
+  public java.util.Iterator<ServiceInstance> getAllowedServicesIterator() {
     return (this.allowedServices == null) ? null : this.allowedServices.iterator();
   }
 
-  public void addToAllowedServices(Service elem) {
+  public void addToAllowedServices(ServiceInstance elem) {
     if (this.allowedServices == null) {
-      this.allowedServices = new ArrayList<Service>();
+      this.allowedServices = new ArrayList<ServiceInstance>();
     }
     this.allowedServices.add(elem);
   }
 
-  public List<Service> getAllowedServices() {
+  public List<ServiceInstance> getAllowedServices() {
     return this.allowedServices;
   }
 
-  public DiscoveryResponse setAllowedServices(List<Service> allowedServices) {
+  public DiscoveryResponse setAllowedServices(List<ServiceInstance> allowedServices) {
     this.allowedServices = allowedServices;
     return this;
   }
@@ -259,7 +259,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       if (value == null) {
         unsetAllowedServices();
       } else {
-        setAllowedServices((List<Service>)value);
+        setAllowedServices((List<ServiceInstance>)value);
       }
       break;
 
@@ -453,14 +453,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           case 2: // ALLOWED_SERVICES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
-                struct.allowedServices = new ArrayList<Service>(_list8.size);
-                for (int _i9 = 0; _i9 < _list8.size; ++_i9)
+                org.apache.thrift.protocol.TList _list40 = iprot.readListBegin();
+                struct.allowedServices = new ArrayList<ServiceInstance>(_list40.size);
+                for (int _i41 = 0; _i41 < _list40.size; ++_i41)
                 {
-                  Service _elem10;
-                  _elem10 = new Service();
-                  _elem10.read(iprot);
-                  struct.allowedServices.add(_elem10);
+                  ServiceInstance _elem42;
+                  _elem42 = new ServiceInstance();
+                  _elem42.read(iprot);
+                  struct.allowedServices.add(_elem42);
                 }
                 iprot.readListEnd();
               }
@@ -496,9 +496,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           oprot.writeFieldBegin(ALLOWED_SERVICES_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.allowedServices.size()));
-            for (Service _iter11 : struct.allowedServices)
+            for (ServiceInstance _iter43 : struct.allowedServices)
             {
-              _iter11.write(oprot);
+              _iter43.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -536,9 +536,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       if (struct.isSetAllowedServices()) {
         {
           oprot.writeI32(struct.allowedServices.size());
-          for (Service _iter12 : struct.allowedServices)
+          for (ServiceInstance _iter44 : struct.allowedServices)
           {
-            _iter12.write(oprot);
+            _iter44.write(oprot);
           }
         }
       }
@@ -554,14 +554,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.allowedServices = new ArrayList<Service>(_list13.size);
-          for (int _i14 = 0; _i14 < _list13.size; ++_i14)
+          org.apache.thrift.protocol.TList _list45 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.allowedServices = new ArrayList<ServiceInstance>(_list45.size);
+          for (int _i46 = 0; _i46 < _list45.size; ++_i46)
           {
-            Service _elem15;
-            _elem15 = new Service();
-            _elem15.read(iprot);
-            struct.allowedServices.add(_elem15);
+            ServiceInstance _elem47;
+            _elem47 = new ServiceInstance();
+            _elem47.read(iprot);
+            struct.allowedServices.add(_elem47);
           }
         }
         struct.setAllowedServicesIsSet(true);

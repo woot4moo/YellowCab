@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -33,28 +33,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Represents a message that is TAXII compliant.
+ * Response detail types for MessageStatusType
  * 
  */
-public class Message implements org.apache.thrift.TBase<Message, Message._Fields>, java.io.Serializable, Cloneable, Comparable<Message> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Message");
+public class MessageStatusDetail implements org.apache.thrift.TBase<MessageStatusDetail, MessageStatusDetail._Fields>, java.io.Serializable, Cloneable, Comparable<MessageStatusDetail> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("MessageStatusDetail");
 
-  private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField IN_RESPONSE_TO_FIELD_DESC = new org.apache.thrift.protocol.TField("inResponseTo", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField KEY_FIELD_DESC = new org.apache.thrift.protocol.TField("key", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("value", org.apache.thrift.protocol.TType.STRING, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new MessageStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new MessageTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new MessageStatusDetailStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new MessageStatusDetailTupleSchemeFactory());
   }
 
-  public String id; // required
-  public String inResponseTo; // required
+  public String key; // required
+  public String value; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    ID((short)1, "id"),
-    IN_RESPONSE_TO((short)2, "inResponseTo");
+    KEY((short)1, "key"),
+    VALUE((short)2, "value");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -69,10 +69,10 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // ID
-          return ID;
-        case 2: // IN_RESPONSE_TO
-          return IN_RESPONSE_TO;
+        case 1: // KEY
+          return KEY;
+        case 2: // VALUE
+          return VALUE;
         default:
           return null;
       }
@@ -116,111 +116,111 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.KEY, new org.apache.thrift.meta_data.FieldMetaData("key", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.IN_RESPONSE_TO, new org.apache.thrift.meta_data.FieldMetaData("inResponseTo", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.VALUE, new org.apache.thrift.meta_data.FieldMetaData("value", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Message.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(MessageStatusDetail.class, metaDataMap);
   }
 
-  public Message() {
+  public MessageStatusDetail() {
   }
 
-  public Message(
-    String id,
-    String inResponseTo)
+  public MessageStatusDetail(
+    String key,
+    String value)
   {
     this();
-    this.id = id;
-    this.inResponseTo = inResponseTo;
+    this.key = key;
+    this.value = value;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public Message(Message other) {
-    if (other.isSetId()) {
-      this.id = other.id;
+  public MessageStatusDetail(MessageStatusDetail other) {
+    if (other.isSetKey()) {
+      this.key = other.key;
     }
-    if (other.isSetInResponseTo()) {
-      this.inResponseTo = other.inResponseTo;
+    if (other.isSetValue()) {
+      this.value = other.value;
     }
   }
 
-  public Message deepCopy() {
-    return new Message(this);
+  public MessageStatusDetail deepCopy() {
+    return new MessageStatusDetail(this);
   }
 
   @Override
   public void clear() {
-    this.id = null;
-    this.inResponseTo = null;
+    this.key = null;
+    this.value = null;
   }
 
-  public String getId() {
-    return this.id;
+  public String getKey() {
+    return this.key;
   }
 
-  public Message setId(String id) {
-    this.id = id;
+  public MessageStatusDetail setKey(String key) {
+    this.key = key;
     return this;
   }
 
-  public void unsetId() {
-    this.id = null;
+  public void unsetKey() {
+    this.key = null;
   }
 
-  /** Returns true if field id is set (has been assigned a value) and false otherwise */
-  public boolean isSetId() {
-    return this.id != null;
+  /** Returns true if field key is set (has been assigned a value) and false otherwise */
+  public boolean isSetKey() {
+    return this.key != null;
   }
 
-  public void setIdIsSet(boolean value) {
+  public void setKeyIsSet(boolean value) {
     if (!value) {
-      this.id = null;
+      this.key = null;
     }
   }
 
-  public String getInResponseTo() {
-    return this.inResponseTo;
+  public String getValue() {
+    return this.value;
   }
 
-  public Message setInResponseTo(String inResponseTo) {
-    this.inResponseTo = inResponseTo;
+  public MessageStatusDetail setValue(String value) {
+    this.value = value;
     return this;
   }
 
-  public void unsetInResponseTo() {
-    this.inResponseTo = null;
+  public void unsetValue() {
+    this.value = null;
   }
 
-  /** Returns true if field inResponseTo is set (has been assigned a value) and false otherwise */
-  public boolean isSetInResponseTo() {
-    return this.inResponseTo != null;
+  /** Returns true if field value is set (has been assigned a value) and false otherwise */
+  public boolean isSetValue() {
+    return this.value != null;
   }
 
-  public void setInResponseToIsSet(boolean value) {
+  public void setValueIsSet(boolean value) {
     if (!value) {
-      this.inResponseTo = null;
+      this.value = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case ID:
+    case KEY:
       if (value == null) {
-        unsetId();
+        unsetKey();
       } else {
-        setId((String)value);
+        setKey((String)value);
       }
       break;
 
-    case IN_RESPONSE_TO:
+    case VALUE:
       if (value == null) {
-        unsetInResponseTo();
+        unsetValue();
       } else {
-        setInResponseTo((String)value);
+        setValue((String)value);
       }
       break;
 
@@ -229,11 +229,11 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case ID:
-      return getId();
+    case KEY:
+      return getKey();
 
-    case IN_RESPONSE_TO:
-      return getInResponseTo();
+    case VALUE:
+      return getValue();
 
     }
     throw new IllegalStateException();
@@ -246,10 +246,10 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
     }
 
     switch (field) {
-    case ID:
-      return isSetId();
-    case IN_RESPONSE_TO:
-      return isSetInResponseTo();
+    case KEY:
+      return isSetKey();
+    case VALUE:
+      return isSetValue();
     }
     throw new IllegalStateException();
   }
@@ -258,30 +258,30 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof Message)
-      return this.equals((Message)that);
+    if (that instanceof MessageStatusDetail)
+      return this.equals((MessageStatusDetail)that);
     return false;
   }
 
-  public boolean equals(Message that) {
+  public boolean equals(MessageStatusDetail that) {
     if (that == null)
       return false;
 
-    boolean this_present_id = true && this.isSetId();
-    boolean that_present_id = true && that.isSetId();
-    if (this_present_id || that_present_id) {
-      if (!(this_present_id && that_present_id))
+    boolean this_present_key = true && this.isSetKey();
+    boolean that_present_key = true && that.isSetKey();
+    if (this_present_key || that_present_key) {
+      if (!(this_present_key && that_present_key))
         return false;
-      if (!this.id.equals(that.id))
+      if (!this.key.equals(that.key))
         return false;
     }
 
-    boolean this_present_inResponseTo = true && this.isSetInResponseTo();
-    boolean that_present_inResponseTo = true && that.isSetInResponseTo();
-    if (this_present_inResponseTo || that_present_inResponseTo) {
-      if (!(this_present_inResponseTo && that_present_inResponseTo))
+    boolean this_present_value = true && this.isSetValue();
+    boolean that_present_value = true && that.isSetValue();
+    if (this_present_value || that_present_value) {
+      if (!(this_present_value && that_present_value))
         return false;
-      if (!this.inResponseTo.equals(that.inResponseTo))
+      if (!this.value.equals(that.value))
         return false;
     }
 
@@ -294,29 +294,29 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
   }
 
   @Override
-  public int compareTo(Message other) {
+  public int compareTo(MessageStatusDetail other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetId()).compareTo(other.isSetId());
+    lastComparison = Boolean.valueOf(isSetKey()).compareTo(other.isSetKey());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+    if (isSetKey()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.key, other.key);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetInResponseTo()).compareTo(other.isSetInResponseTo());
+    lastComparison = Boolean.valueOf(isSetValue()).compareTo(other.isSetValue());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetInResponseTo()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.inResponseTo, other.inResponseTo);
+    if (isSetValue()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.value, other.value);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -338,22 +338,22 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("Message(");
+    StringBuilder sb = new StringBuilder("MessageStatusDetail(");
     boolean first = true;
 
-    sb.append("id:");
-    if (this.id == null) {
+    sb.append("key:");
+    if (this.key == null) {
       sb.append("null");
     } else {
-      sb.append(this.id);
+      sb.append(this.key);
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("inResponseTo:");
-    if (this.inResponseTo == null) {
+    sb.append("value:");
+    if (this.value == null) {
       sb.append("null");
     } else {
-      sb.append(this.inResponseTo);
+      sb.append(this.value);
     }
     first = false;
     sb.append(")");
@@ -362,11 +362,11 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (id == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' was not present! Struct: " + toString());
+    if (key == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'key' was not present! Struct: " + toString());
     }
-    if (inResponseTo == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'inResponseTo' was not present! Struct: " + toString());
+    if (value == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'value' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -387,15 +387,15 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
     }
   }
 
-  private static class MessageStandardSchemeFactory implements SchemeFactory {
-    public MessageStandardScheme getScheme() {
-      return new MessageStandardScheme();
+  private static class MessageStatusDetailStandardSchemeFactory implements SchemeFactory {
+    public MessageStatusDetailStandardScheme getScheme() {
+      return new MessageStatusDetailStandardScheme();
     }
   }
 
-  private static class MessageStandardScheme extends StandardScheme<Message> {
+  private static class MessageStatusDetailStandardScheme extends StandardScheme<MessageStatusDetail> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, Message struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, MessageStatusDetail struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -405,18 +405,18 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
           break;
         }
         switch (schemeField.id) {
-          case 1: // ID
+          case 1: // KEY
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.id = iprot.readString();
-              struct.setIdIsSet(true);
+              struct.key = iprot.readString();
+              struct.setKeyIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // IN_RESPONSE_TO
+          case 2: // VALUE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.inResponseTo = iprot.readString();
-              struct.setInResponseToIsSet(true);
+              struct.value = iprot.readString();
+              struct.setValueIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -432,18 +432,18 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, Message struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, MessageStatusDetail struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.id != null) {
-        oprot.writeFieldBegin(ID_FIELD_DESC);
-        oprot.writeString(struct.id);
+      if (struct.key != null) {
+        oprot.writeFieldBegin(KEY_FIELD_DESC);
+        oprot.writeString(struct.key);
         oprot.writeFieldEnd();
       }
-      if (struct.inResponseTo != null) {
-        oprot.writeFieldBegin(IN_RESPONSE_TO_FIELD_DESC);
-        oprot.writeString(struct.inResponseTo);
+      if (struct.value != null) {
+        oprot.writeFieldBegin(VALUE_FIELD_DESC);
+        oprot.writeString(struct.value);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -452,28 +452,28 @@ public class Message implements org.apache.thrift.TBase<Message, Message._Fields
 
   }
 
-  private static class MessageTupleSchemeFactory implements SchemeFactory {
-    public MessageTupleScheme getScheme() {
-      return new MessageTupleScheme();
+  private static class MessageStatusDetailTupleSchemeFactory implements SchemeFactory {
+    public MessageStatusDetailTupleScheme getScheme() {
+      return new MessageStatusDetailTupleScheme();
     }
   }
 
-  private static class MessageTupleScheme extends TupleScheme<Message> {
+  private static class MessageStatusDetailTupleScheme extends TupleScheme<MessageStatusDetail> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, Message struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, MessageStatusDetail struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeString(struct.id);
-      oprot.writeString(struct.inResponseTo);
+      oprot.writeString(struct.key);
+      oprot.writeString(struct.value);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, Message struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, MessageStatusDetail struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.id = iprot.readString();
-      struct.setIdIsSet(true);
-      struct.inResponseTo = iprot.readString();
-      struct.setInResponseToIsSet(true);
+      struct.key = iprot.readString();
+      struct.setKeyIsSet(true);
+      struct.value = iprot.readString();
+      struct.setValueIsSet(true);
     }
   }
 

@@ -4,33 +4,22 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package yellowcab;
+package com.yellowcab;
 
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.protocol.TTupleProtocol;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
-
 import org.apache.thrift.scheme.TupleScheme;
-import org.apache.thrift.protocol.TTupleProtocol;
-import org.apache.thrift.protocol.TProtocolException;
-import org.apache.thrift.EncodingUtils;
-import org.apache.thrift.TException;
-import org.apache.thrift.async.AsyncMethodCallback;
-import org.apache.thrift.server.AbstractNonblockingServer.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.EnumMap;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.EnumSet;
+
 import java.util.Collections;
-import java.util.BitSet;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a service that can be discovered
@@ -468,11 +457,11 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+  public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
     schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+  public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
     schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
@@ -508,13 +497,13 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
     return sb.toString();
   }
 
-  public void validate() throws org.apache.thrift.TException {
+  public void validate() throws TException {
     // check for required fields
     if (serviceName == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'serviceName' was not present! Struct: " + toString());
+      throw new TProtocolException("Required field 'serviceName' was not present! Struct: " + toString());
     }
     if (address == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'address' was not present! Struct: " + toString());
+      throw new TProtocolException("Required field 'address' was not present! Struct: " + toString());
     }
     // alas, we cannot check 'port' because it's a primitive and you chose the non-beans generator.
     // alas, we cannot check 'isActive' because it's a primitive and you chose the non-beans generator.
@@ -524,7 +513,7 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
     try {
       write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -534,7 +523,7 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
       // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
       __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -547,7 +536,7 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
 
   private static class ServiceStandardScheme extends StandardScheme<Service> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, Service struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, Service struct) throws TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -598,15 +587,15 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
 
       // check for required fields of primitive type, which can't be checked in the validate method
       if (!struct.isSetPort()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' was not found in serialized data! Struct: " + toString());
+        throw new TProtocolException("Required field 'port' was not found in serialized data! Struct: " + toString());
       }
       if (!struct.isSetIsActive()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'isActive' was not found in serialized data! Struct: " + toString());
+        throw new TProtocolException("Required field 'isActive' was not found in serialized data! Struct: " + toString());
       }
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, Service struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, Service struct) throws TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
@@ -641,7 +630,7 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
   private static class ServiceTupleScheme extends TupleScheme<Service> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, Service struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, Service struct) throws TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       oprot.writeString(struct.serviceName);
       oprot.writeString(struct.address);
@@ -650,7 +639,7 @@ public class Service implements org.apache.thrift.TBase<Service, Service._Fields
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, Service struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, Service struct) throws TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       struct.serviceName = iprot.readString();
       struct.setServiceNameIsSet(true);
