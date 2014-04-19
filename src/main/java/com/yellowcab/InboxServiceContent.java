@@ -381,13 +381,13 @@ public class InboxServiceContent implements org.apache.thrift.TBase<InboxService
           case 1: // SUBTYPES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                struct.subtypes = new ArrayList<String>(_list0.size);
-                for (int _i1 = 0; _i1 < _list0.size; ++_i1)
+                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
+                struct.subtypes = new ArrayList<String>(_list8.size);
+                for (int _i9 = 0; _i9 < _list8.size; ++_i9)
                 {
-                  String _elem2;
-                  _elem2 = iprot.readString();
-                  struct.subtypes.add(_elem2);
+                  String _elem10;
+                  _elem10 = iprot.readString();
+                  struct.subtypes.add(_elem10);
                 }
                 iprot.readListEnd();
               }
@@ -415,9 +415,9 @@ public class InboxServiceContent implements org.apache.thrift.TBase<InboxService
         oprot.writeFieldBegin(SUBTYPES_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.subtypes.size()));
-          for (String _iter3 : struct.subtypes)
+          for (String _iter11 : struct.subtypes)
           {
-            oprot.writeString(_iter3);
+            oprot.writeString(_iter11);
           }
           oprot.writeListEnd();
         }
@@ -442,9 +442,9 @@ public class InboxServiceContent implements org.apache.thrift.TBase<InboxService
       TTupleProtocol oprot = (TTupleProtocol) prot;
       {
         oprot.writeI32(struct.subtypes.size());
-        for (String _iter4 : struct.subtypes)
+        for (String _iter12 : struct.subtypes)
         {
-          oprot.writeString(_iter4);
+          oprot.writeString(_iter12);
         }
       }
     }
@@ -453,13 +453,13 @@ public class InboxServiceContent implements org.apache.thrift.TBase<InboxService
     public void read(org.apache.thrift.protocol.TProtocol prot, InboxServiceContent struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       {
-        org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.subtypes = new ArrayList<String>(_list5.size);
-        for (int _i6 = 0; _i6 < _list5.size; ++_i6)
+        org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.subtypes = new ArrayList<String>(_list13.size);
+        for (int _i14 = 0; _i14 < _list13.size; ++_i14)
         {
-          String _elem7;
-          _elem7 = iprot.readString();
-          struct.subtypes.add(_elem7);
+          String _elem15;
+          _elem15 = iprot.readString();
+          struct.subtypes.add(_elem15);
         }
       }
       struct.setSubtypesIsSet(true);

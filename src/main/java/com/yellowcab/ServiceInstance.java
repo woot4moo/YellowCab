@@ -1384,13 +1384,13 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
           case 5: // MESSAGE_BINDINGS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
-                struct.messageBindings = new ArrayList<String>(_list8.size);
-                for (int _i9 = 0; _i9 < _list8.size; ++_i9)
+                org.apache.thrift.protocol.TList _list16 = iprot.readListBegin();
+                struct.messageBindings = new ArrayList<String>(_list16.size);
+                for (int _i17 = 0; _i17 < _list16.size; ++_i17)
                 {
-                  String _elem10;
-                  _elem10 = iprot.readString();
-                  struct.messageBindings.add(_elem10);
+                  String _elem18;
+                  _elem18 = iprot.readString();
+                  struct.messageBindings.add(_elem18);
                 }
                 iprot.readListEnd();
               }
@@ -1402,14 +1402,14 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
           case 6: // SUPPORTED_QUERIES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list11 = iprot.readListBegin();
-                struct.supportedQueries = new ArrayList<Query>(_list11.size);
-                for (int _i12 = 0; _i12 < _list11.size; ++_i12)
+                org.apache.thrift.protocol.TList _list19 = iprot.readListBegin();
+                struct.supportedQueries = new ArrayList<Query>(_list19.size);
+                for (int _i20 = 0; _i20 < _list19.size; ++_i20)
                 {
-                  Query _elem13;
-                  _elem13 = new Query();
-                  _elem13.read(iprot);
-                  struct.supportedQueries.add(_elem13);
+                  Query _elem21;
+                  _elem21 = new Query();
+                  _elem21.read(iprot);
+                  struct.supportedQueries.add(_elem21);
                 }
                 iprot.readListEnd();
               }
@@ -1421,14 +1421,14 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
           case 7: // INBOX_SERVICE_ACCEPTED_CONTENTS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list14 = iprot.readListBegin();
-                struct.inboxServiceAcceptedContents = new ArrayList<InboxServiceContent>(_list14.size);
-                for (int _i15 = 0; _i15 < _list14.size; ++_i15)
+                org.apache.thrift.protocol.TList _list22 = iprot.readListBegin();
+                struct.inboxServiceAcceptedContents = new ArrayList<InboxServiceContent>(_list22.size);
+                for (int _i23 = 0; _i23 < _list22.size; ++_i23)
                 {
-                  InboxServiceContent _elem16;
-                  _elem16 = new InboxServiceContent();
-                  _elem16.read(iprot);
-                  struct.inboxServiceAcceptedContents.add(_elem16);
+                  InboxServiceContent _elem24;
+                  _elem24 = new InboxServiceContent();
+                  _elem24.read(iprot);
+                  struct.inboxServiceAcceptedContents.add(_elem24);
                 }
                 iprot.readListEnd();
               }
@@ -1493,9 +1493,9 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
         oprot.writeFieldBegin(MESSAGE_BINDINGS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.messageBindings.size()));
-          for (String _iter17 : struct.messageBindings)
+          for (String _iter25 : struct.messageBindings)
           {
-            oprot.writeString(_iter17);
+            oprot.writeString(_iter25);
           }
           oprot.writeListEnd();
         }
@@ -1506,9 +1506,9 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
           oprot.writeFieldBegin(SUPPORTED_QUERIES_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.supportedQueries.size()));
-            for (Query _iter18 : struct.supportedQueries)
+            for (Query _iter26 : struct.supportedQueries)
             {
-              _iter18.write(oprot);
+              _iter26.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -1520,9 +1520,9 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
           oprot.writeFieldBegin(INBOX_SERVICE_ACCEPTED_CONTENTS_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.inboxServiceAcceptedContents.size()));
-            for (InboxServiceContent _iter19 : struct.inboxServiceAcceptedContents)
+            for (InboxServiceContent _iter27 : struct.inboxServiceAcceptedContents)
             {
-              _iter19.write(oprot);
+              _iter27.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -1564,9 +1564,9 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
       oprot.writeString(struct.serviceAddress);
       {
         oprot.writeI32(struct.messageBindings.size());
-        for (String _iter20 : struct.messageBindings)
+        for (String _iter28 : struct.messageBindings)
         {
-          oprot.writeString(_iter20);
+          oprot.writeString(_iter28);
         }
       }
       BitSet optionals = new BitSet();
@@ -1586,18 +1586,18 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
       if (struct.isSetSupportedQueries()) {
         {
           oprot.writeI32(struct.supportedQueries.size());
-          for (Query _iter21 : struct.supportedQueries)
+          for (Query _iter29 : struct.supportedQueries)
           {
-            _iter21.write(oprot);
+            _iter29.write(oprot);
           }
         }
       }
       if (struct.isSetInboxServiceAcceptedContents()) {
         {
           oprot.writeI32(struct.inboxServiceAcceptedContents.size());
-          for (InboxServiceContent _iter22 : struct.inboxServiceAcceptedContents)
+          for (InboxServiceContent _iter30 : struct.inboxServiceAcceptedContents)
           {
-            _iter22.write(oprot);
+            _iter30.write(oprot);
           }
         }
       }
@@ -1621,41 +1621,41 @@ public class ServiceInstance implements org.apache.thrift.TBase<ServiceInstance,
       struct.serviceAddress = iprot.readString();
       struct.setServiceAddressIsSet(true);
       {
-        org.apache.thrift.protocol.TList _list23 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.messageBindings = new ArrayList<String>(_list23.size);
-        for (int _i24 = 0; _i24 < _list23.size; ++_i24)
+        org.apache.thrift.protocol.TList _list31 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.messageBindings = new ArrayList<String>(_list31.size);
+        for (int _i32 = 0; _i32 < _list31.size; ++_i32)
         {
-          String _elem25;
-          _elem25 = iprot.readString();
-          struct.messageBindings.add(_elem25);
+          String _elem33;
+          _elem33 = iprot.readString();
+          struct.messageBindings.add(_elem33);
         }
       }
       struct.setMessageBindingsIsSet(true);
       BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TList _list26 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.supportedQueries = new ArrayList<Query>(_list26.size);
-          for (int _i27 = 0; _i27 < _list26.size; ++_i27)
+          org.apache.thrift.protocol.TList _list34 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.supportedQueries = new ArrayList<Query>(_list34.size);
+          for (int _i35 = 0; _i35 < _list34.size; ++_i35)
           {
-            Query _elem28;
-            _elem28 = new Query();
-            _elem28.read(iprot);
-            struct.supportedQueries.add(_elem28);
+            Query _elem36;
+            _elem36 = new Query();
+            _elem36.read(iprot);
+            struct.supportedQueries.add(_elem36);
           }
         }
         struct.setSupportedQueriesIsSet(true);
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.inboxServiceAcceptedContents = new ArrayList<InboxServiceContent>(_list29.size);
-          for (int _i30 = 0; _i30 < _list29.size; ++_i30)
+          org.apache.thrift.protocol.TList _list37 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.inboxServiceAcceptedContents = new ArrayList<InboxServiceContent>(_list37.size);
+          for (int _i38 = 0; _i38 < _list37.size; ++_i38)
           {
-            InboxServiceContent _elem31;
-            _elem31 = new InboxServiceContent();
-            _elem31.read(iprot);
-            struct.inboxServiceAcceptedContents.add(_elem31);
+            InboxServiceContent _elem39;
+            _elem39 = new InboxServiceContent();
+            _elem39.read(iprot);
+            struct.inboxServiceAcceptedContents.add(_elem39);
           }
         }
         struct.setInboxServiceAcceptedContentsIsSet(true);

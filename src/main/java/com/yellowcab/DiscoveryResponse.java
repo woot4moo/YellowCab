@@ -52,6 +52,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
 
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)1);
   private static final org.apache.thrift.protocol.TField ALLOWED_SERVICES_FIELD_DESC = new org.apache.thrift.protocol.TField("allowedServices", org.apache.thrift.protocol.TType.LIST, (short)2);
+  private static final org.apache.thrift.protocol.TField HEADER_FIELD_DESC = new org.apache.thrift.protocol.TField("header", org.apache.thrift.protocol.TType.STRUCT, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -65,6 +66,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
    */
   public MessageStatusType status; // optional
   public List<ServiceInstance> allowedServices; // optional
+  public TAXIIHeader header; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -73,7 +75,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
      * @see MessageStatusType
      */
     STATUS((short)1, "status"),
-    ALLOWED_SERVICES((short)2, "allowedServices");
+    ALLOWED_SERVICES((short)2, "allowedServices"),
+    HEADER((short)3, "header");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -92,6 +95,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           return STATUS;
         case 2: // ALLOWED_SERVICES
           return ALLOWED_SERVICES;
+        case 3: // HEADER
+          return HEADER;
         default:
           return null;
       }
@@ -141,11 +146,20 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     tmpMap.put(_Fields.ALLOWED_SERVICES, new org.apache.thrift.meta_data.FieldMetaData("allowedServices", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
             new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ServiceInstance.class))));
+    tmpMap.put(_Fields.HEADER, new org.apache.thrift.meta_data.FieldMetaData("header", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, TAXIIHeader.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(DiscoveryResponse.class, metaDataMap);
   }
 
   public DiscoveryResponse() {
+  }
+
+  public DiscoveryResponse(
+    TAXIIHeader header)
+  {
+    this();
+    this.header = header;
   }
 
   /**
@@ -162,6 +176,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       this.allowedServices = __this__allowedServices;
     }
+    if (other.isSetHeader()) {
+      this.header = new TAXIIHeader(other.header);
+    }
   }
 
   public DiscoveryResponse deepCopy() {
@@ -172,6 +189,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
   public void clear() {
     this.status = null;
     this.allowedServices = null;
+    this.header = null;
   }
 
   /**
@@ -245,6 +263,30 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     }
   }
 
+  public TAXIIHeader getHeader() {
+    return this.header;
+  }
+
+  public DiscoveryResponse setHeader(TAXIIHeader header) {
+    this.header = header;
+    return this;
+  }
+
+  public void unsetHeader() {
+    this.header = null;
+  }
+
+  /** Returns true if field header is set (has been assigned a value) and false otherwise */
+  public boolean isSetHeader() {
+    return this.header != null;
+  }
+
+  public void setHeaderIsSet(boolean value) {
+    if (!value) {
+      this.header = null;
+    }
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case STATUS:
@@ -263,6 +305,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       break;
 
+    case HEADER:
+      if (value == null) {
+        unsetHeader();
+      } else {
+        setHeader((TAXIIHeader)value);
+      }
+      break;
+
     }
   }
 
@@ -273,6 +323,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
 
     case ALLOWED_SERVICES:
       return getAllowedServices();
+
+    case HEADER:
+      return getHeader();
 
     }
     throw new IllegalStateException();
@@ -289,6 +342,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       return isSetStatus();
     case ALLOWED_SERVICES:
       return isSetAllowedServices();
+    case HEADER:
+      return isSetHeader();
     }
     throw new IllegalStateException();
   }
@@ -324,6 +379,15 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
         return false;
     }
 
+    boolean this_present_header = true && this.isSetHeader();
+    boolean that_present_header = true && that.isSetHeader();
+    if (this_present_header || that_present_header) {
+      if (!(this_present_header && that_present_header))
+        return false;
+      if (!this.header.equals(that.header))
+        return false;
+    }
+
     return true;
   }
 
@@ -356,6 +420,16 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     }
     if (isSetAllowedServices()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.allowedServices, other.allowedServices);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetHeader()).compareTo(other.isSetHeader());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetHeader()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.header, other.header);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -399,13 +473,27 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       first = false;
     }
+    if (!first) sb.append(", ");
+    sb.append("header:");
+    if (this.header == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.header);
+    }
+    first = false;
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    if (header == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'header' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
+    if (header != null) {
+      header.validate();
+    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -453,18 +541,27 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           case 2: // ALLOWED_SERVICES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list40 = iprot.readListBegin();
-                struct.allowedServices = new ArrayList<ServiceInstance>(_list40.size);
-                for (int _i41 = 0; _i41 < _list40.size; ++_i41)
+                org.apache.thrift.protocol.TList _list48 = iprot.readListBegin();
+                struct.allowedServices = new ArrayList<ServiceInstance>(_list48.size);
+                for (int _i49 = 0; _i49 < _list48.size; ++_i49)
                 {
-                  ServiceInstance _elem42;
-                  _elem42 = new ServiceInstance();
-                  _elem42.read(iprot);
-                  struct.allowedServices.add(_elem42);
+                  ServiceInstance _elem50;
+                  _elem50 = new ServiceInstance();
+                  _elem50.read(iprot);
+                  struct.allowedServices.add(_elem50);
                 }
                 iprot.readListEnd();
               }
               struct.setAllowedServicesIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // HEADER
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+              struct.header = new TAXIIHeader();
+              struct.header.read(iprot);
+              struct.setHeaderIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -496,14 +593,19 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           oprot.writeFieldBegin(ALLOWED_SERVICES_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.allowedServices.size()));
-            for (ServiceInstance _iter43 : struct.allowedServices)
+            for (ServiceInstance _iter51 : struct.allowedServices)
             {
-              _iter43.write(oprot);
+              _iter51.write(oprot);
             }
             oprot.writeListEnd();
           }
           oprot.writeFieldEnd();
         }
+      }
+      if (struct.header != null) {
+        oprot.writeFieldBegin(HEADER_FIELD_DESC);
+        struct.header.write(oprot);
+        oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -522,6 +624,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, DiscoveryResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      struct.header.write(oprot);
       BitSet optionals = new BitSet();
       if (struct.isSetStatus()) {
         optionals.set(0);
@@ -536,9 +639,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       if (struct.isSetAllowedServices()) {
         {
           oprot.writeI32(struct.allowedServices.size());
-          for (ServiceInstance _iter44 : struct.allowedServices)
+          for (ServiceInstance _iter52 : struct.allowedServices)
           {
-            _iter44.write(oprot);
+            _iter52.write(oprot);
           }
         }
       }
@@ -547,6 +650,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, DiscoveryResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
+      struct.header = new TAXIIHeader();
+      struct.header.read(iprot);
+      struct.setHeaderIsSet(true);
       BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
         struct.status = MessageStatusType.findByValue(iprot.readI32());
@@ -554,14 +660,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list45 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.allowedServices = new ArrayList<ServiceInstance>(_list45.size);
-          for (int _i46 = 0; _i46 < _list45.size; ++_i46)
+          org.apache.thrift.protocol.TList _list53 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.allowedServices = new ArrayList<ServiceInstance>(_list53.size);
+          for (int _i54 = 0; _i54 < _list53.size; ++_i54)
           {
-            ServiceInstance _elem47;
-            _elem47 = new ServiceInstance();
-            _elem47.read(iprot);
-            struct.allowedServices.add(_elem47);
+            ServiceInstance _elem55;
+            _elem55 = new ServiceInstance();
+            _elem55.read(iprot);
+            struct.allowedServices.add(_elem55);
           }
         }
         struct.setAllowedServicesIsSet(true);

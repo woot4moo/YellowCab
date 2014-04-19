@@ -11,7 +11,7 @@ import com.yellowcab.MessageStatusType;
 import com.yellowcab.Query;
 import com.yellowcab.ServiceInstance;
 import com.yellowcab.ServiceType;
-import com.yellowcab.TAXIIRequest;
+import com.yellowcab.TAXIIHeader;
 import org.apache.thrift.TException;
 
 import java.util.ArrayList;
@@ -31,7 +31,6 @@ import java.util.Set;
 public class DiscoveryHandler implements DiscoveryService.Iface{
 
     private static Set<ServiceInstance> dummyServices = new HashSet<>();
-    private final TAXIIRequest discovery = new TAXIIRequest(MessageBodyType.DISCOVERY_REQUEST);
     static{
         Message message1 = new Message("12","14");
         Message message2 = new Message("13","14");
@@ -62,9 +61,11 @@ public class DiscoveryHandler implements DiscoveryService.Iface{
 
     @Override
     public DiscoveryResponse makeRequest(DiscoveryRequest request) throws TException {
+        TAXIIHeader header = new TAXIIHeader("1",MessageBodyType.DISCOVERY_RESPONSE);
         if(!request.getMessageType().equals(MessageBodyType.DISCOVERY_REQUEST)){
             DiscoveryResponse badResponse = new DiscoveryResponse();
             badResponse.setStatus(MessageStatusType.FAILURE);
+            badResponse.setHeader(header);
             return badResponse;
         }
         //parse request for validation purposes.
@@ -72,18 +73,9 @@ public class DiscoveryHandler implements DiscoveryService.Iface{
         serviceList.addAll(knownServices());
         DiscoveryResponse response = new DiscoveryResponse();
         response.setAllowedServices(serviceList);
+        response.setHeader(header);
         return response;
     }
 
-/*
-    public TAXIIResponse foo(TAXIIRequest request) throws TException {
 
-        /*
-        if(discovery.equals(request)){
-            return new TAXIIResponse(new MessageStatus(MessageStatusType.SUCCESS,new Message(),null));
-        }
-        return new TAXIIResponse(new MessageStatus(MessageStatusType.FAILURE,new Message(),null));
-
-    }
-       */
 }

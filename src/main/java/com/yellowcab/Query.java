@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
 public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, java.io.Serializable, Cloneable, Comparable<Query> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Query");
 
-  private static final org.apache.thrift.protocol.TField FORMAT_IDS_FIELD_DESC = new org.apache.thrift.protocol.TField("formatIds", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField FORMAT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("formatId", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -53,7 +53,7 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
    * 
    * *
    */
-  public String formatIds; // required
+  public String formatId; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -63,7 +63,7 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
      * 
      * *
      */
-    FORMAT_IDS((short)1, "formatIds");
+    FORMAT_ID((short)1, "formatId");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -78,8 +78,8 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // FORMAT_IDS
-          return FORMAT_IDS;
+        case 1: // FORMAT_ID
+          return FORMAT_ID;
         default:
           return null;
       }
@@ -123,7 +123,7 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.FORMAT_IDS, new org.apache.thrift.meta_data.FieldMetaData("formatIds", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.FORMAT_ID, new org.apache.thrift.meta_data.FieldMetaData("formatId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Query.class, metaDataMap);
@@ -133,18 +133,18 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
   }
 
   public Query(
-    String formatIds)
+    String formatId)
   {
     this();
-    this.formatIds = formatIds;
+    this.formatId = formatId;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
   public Query(Query other) {
-    if (other.isSetFormatIds()) {
-      this.formatIds = other.formatIds;
+    if (other.isSetFormatId()) {
+      this.formatId = other.formatId;
     }
   }
 
@@ -154,7 +154,7 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
 
   @Override
   public void clear() {
-    this.formatIds = null;
+    this.formatId = null;
   }
 
   /**
@@ -163,8 +163,8 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
    * 
    * *
    */
-  public String getFormatIds() {
-    return this.formatIds;
+  public String getFormatId() {
+    return this.formatId;
   }
 
   /**
@@ -173,33 +173,33 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
    * 
    * *
    */
-  public Query setFormatIds(String formatIds) {
-    this.formatIds = formatIds;
+  public Query setFormatId(String formatId) {
+    this.formatId = formatId;
     return this;
   }
 
-  public void unsetFormatIds() {
-    this.formatIds = null;
+  public void unsetFormatId() {
+    this.formatId = null;
   }
 
-  /** Returns true if field formatIds is set (has been assigned a value) and false otherwise */
-  public boolean isSetFormatIds() {
-    return this.formatIds != null;
+  /** Returns true if field formatId is set (has been assigned a value) and false otherwise */
+  public boolean isSetFormatId() {
+    return this.formatId != null;
   }
 
-  public void setFormatIdsIsSet(boolean value) {
+  public void setFormatIdIsSet(boolean value) {
     if (!value) {
-      this.formatIds = null;
+      this.formatId = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case FORMAT_IDS:
+    case FORMAT_ID:
       if (value == null) {
-        unsetFormatIds();
+        unsetFormatId();
       } else {
-        setFormatIds((String)value);
+        setFormatId((String)value);
       }
       break;
 
@@ -208,8 +208,8 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case FORMAT_IDS:
-      return getFormatIds();
+    case FORMAT_ID:
+      return getFormatId();
 
     }
     throw new IllegalStateException();
@@ -222,8 +222,8 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
     }
 
     switch (field) {
-    case FORMAT_IDS:
-      return isSetFormatIds();
+    case FORMAT_ID:
+      return isSetFormatId();
     }
     throw new IllegalStateException();
   }
@@ -241,12 +241,12 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
     if (that == null)
       return false;
 
-    boolean this_present_formatIds = true && this.isSetFormatIds();
-    boolean that_present_formatIds = true && that.isSetFormatIds();
-    if (this_present_formatIds || that_present_formatIds) {
-      if (!(this_present_formatIds && that_present_formatIds))
+    boolean this_present_formatId = true && this.isSetFormatId();
+    boolean that_present_formatId = true && that.isSetFormatId();
+    if (this_present_formatId || that_present_formatId) {
+      if (!(this_present_formatId && that_present_formatId))
         return false;
-      if (!this.formatIds.equals(that.formatIds))
+      if (!this.formatId.equals(that.formatId))
         return false;
     }
 
@@ -266,12 +266,12 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetFormatIds()).compareTo(other.isSetFormatIds());
+    lastComparison = Boolean.valueOf(isSetFormatId()).compareTo(other.isSetFormatId());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetFormatIds()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.formatIds, other.formatIds);
+    if (isSetFormatId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.formatId, other.formatId);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -296,11 +296,11 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
     StringBuilder sb = new StringBuilder("Query(");
     boolean first = true;
 
-    sb.append("formatIds:");
-    if (this.formatIds == null) {
+    sb.append("formatId:");
+    if (this.formatId == null) {
       sb.append("null");
     } else {
-      sb.append(this.formatIds);
+      sb.append(this.formatId);
     }
     first = false;
     sb.append(")");
@@ -309,8 +309,8 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (formatIds == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'formatIds' was not present! Struct: " + toString());
+    if (formatId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'formatId' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
   }
@@ -349,10 +349,10 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
           break;
         }
         switch (schemeField.id) {
-          case 1: // FORMAT_IDS
+          case 1: // FORMAT_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.formatIds = iprot.readString();
-              struct.setFormatIdsIsSet(true);
+              struct.formatId = iprot.readString();
+              struct.setFormatIdIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -372,9 +372,9 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.formatIds != null) {
-        oprot.writeFieldBegin(FORMAT_IDS_FIELD_DESC);
-        oprot.writeString(struct.formatIds);
+      if (struct.formatId != null) {
+        oprot.writeFieldBegin(FORMAT_ID_FIELD_DESC);
+        oprot.writeString(struct.formatId);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -394,14 +394,14 @@ public class Query implements org.apache.thrift.TBase<Query, Query._Fields>, jav
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, Query struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      oprot.writeString(struct.formatIds);
+      oprot.writeString(struct.formatId);
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Query struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.formatIds = iprot.readString();
-      struct.setFormatIdsIsSet(true);
+      struct.formatId = iprot.readString();
+      struct.setFormatIdIsSet(true);
     }
   }
 

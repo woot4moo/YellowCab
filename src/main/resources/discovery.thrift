@@ -2,6 +2,125 @@ namespace java com.yellowcab
 namespace py com.yellowcab
 
 /**
+* Represents the TAXII specific message body types.
+**/
+enum MessageBodyType{
+
+    /**
+      This message is sent to a Collection Management Service to request information about the available
+      TAXII Data Collections. The body of this message is empty.
+    **/
+    COLLECTION_INFORMATION_REQUEST,
+    /**
+      This message is sent in response to a TAXII Collection Information Request if the request is successful. If
+      there is an error condition, a TAXII Status Message indicating the nature of the error is sent instead.
+      Note that the Producer is under no obligation to list all Collections and can exclude any or all Collections
+      from this response for any reason. For example, the Producer might wish to exclude Collections created
+      for a specific customer from a list of all Collections. As such, different requesters might be given
+      different lists of Collections to their requests to the same Collection Management Service.
+    **/
+    COLLECTION_INFORMATION_RESPONSE,
+   /**
+     This message is sent to a Discovery Service to request information about provided TAXII Services. Such
+     information includes what TAXII Services are offered, how the TAXII Daemons that support those
+     Services can be accessed, and what protocols and message bindings are supported. The body of this
+     message is empty.
+    **/
+   DISCOVERY_REQUEST,
+   /**
+     This message is sent from a Discovery Service in response to a TAXII Discovery Request if the request is
+     successful. If there is an error condition, a TAXII Status Message indicating the nature of the error is sent
+     instead.
+    **/
+   DISCOVERY_RESPONSE,
+   /**
+     A TAXII Inbox Message is used to push content from one entity to the TAXII Inbox Service of another
+     entity.
+    **/
+   INBOX_MESSAGE,
+   /**
+     This message is used to establish a new subscription or manage an existing subscription. The Collection
+     Management Service responds with a TAXII Manage Collection Subscription Response if the request is
+     successful and will be honored or with a TAXII Status Message if the request is being rejected or there
+     was an error.
+    **/
+   MANAGE_COLLECTION_SUBSCRIPTION_REQUEST,
+   /**
+     This message is returned in response to a TAXII Manage Collection Request Message if the requested
+     action was successfully completed.
+    **/
+   MANAGE_COLLECTION_SUBSCRIPTION_RESPONSE,
+   /**
+     The TAXII Poll Fulfillment Request is used to collect results from a Poll Service where the result set has
+     already been created. In general, this is used to collect results using Asynchronous Polling (see Section
+     3.6.2) or to collect multiple parts of a large result set over a Multi-Part Poll Exchange (see Section 3.6.1).
+    **/
+   POLL_FULFILLMENT_REQUEST,
+   /**
+     This message is sent from a Consumer to a TAXII Poll Service to request that data from the TAXII Data
+     Collection be returned to the Consumer. Poll Requests are always made against a specific TAXII Data
+     Collection. Whether or not the Consumer needs an established subscription to that TAXII Data Collection
+     in order to receive content is left to the Producer and can vary across Data Collections.
+    **/
+   POLL_REQUEST,
+   /**
+     This message is sent from a Consumer to a TAXII Poll Service to request that data from the TAXII Data
+     Collection be returned to the Consumer. Poll Requests are always made against a specific TAXII Data
+     Collection. Whether or not the Consumer needs an established subscription to that TAXII Data Collection
+     in order to receive content is left to the Producer and can vary across Data Collections.
+    **/
+   POLL_RESPONSE,
+   /**
+     A TAXII Status Message is used to indicate a condition of success or error. Status Messages are always
+     sent from a TAXII Daemon to a TAXII Client in response to a TAXII Message. A TAXII Status Message can
+     be used to indicate that an error occurred when processing a received TAXII Message. Error conditions
+     can occur because the request itself was invalid or because the recipient was unwilling or unable to
+     honor the request. The Status Message is also used in the Inbox Exchange (see Section 3.2) to indicate
+     successful reception of an Inbox Message or for Asynchronous Polling (see Section 3.6.2) to indicate a
+     Poll Request will be fulfilled at a later time.
+   **/
+   STATUS
+
+}
+
+
+/**
+* Represents the header of a standard TAXII message
+**/
+struct TAXIIHeader{
+    1: required string messageId;
+    /**
+    * The type of the TAXII Message. Only identifiers for defined
+      TAXII Messages, as defined in Section 4.4, are allowed in this
+      field. (I.e., third parties MUST NOT define their own TAXII
+      Message Body Types.)
+    **/
+    2: required MessageBodyType messageBodyType;
+    /**
+    * Contains the Message ID of the message to which this is a
+      response, if this message is a response.
+    **/
+    3: optional string inResponseTo;
+    /**
+    * Third parties MAY define their own additional header fields.
+      Extended-Header fields that are not recognized by a recipient
+      SHOULD be ignored. Requirements for Extended-Header fields
+      are listed in Section 4.1.5
+    **/
+    4: optional list<string> extendedHeaders;
+    /**
+     This field contains a cryptographic signature for this TAXII
+      Message. The scope of this signature is the entire TAXII
+      Message (i.e., Signatures contained in this field can sign all or
+      any parts of the TAXII Message). Details for how a signature is
+      expressed are covered in each TAXII Message Binding
+      Specification.
+    **/
+    5: optional string signature;
+}
+
+
+/**
 * Represents a message that is TAXII compliant.
 **/
 struct Message{
@@ -139,87 +258,6 @@ struct ServiceInstance{
 
 
 
-/**
-* Represents the TAXII specific message body types.
-**/
-enum MessageBodyType{
-
-    /**
-      This message is sent to a Collection Management Service to request information about the available
-      TAXII Data Collections. The body of this message is empty.
-    **/
-    COLLECTION_INFORMATION_REQUEST,
-    /**
-      This message is sent in response to a TAXII Collection Information Request if the request is successful. If
-      there is an error condition, a TAXII Status Message indicating the nature of the error is sent instead.
-      Note that the Producer is under no obligation to list all Collections and can exclude any or all Collections
-      from this response for any reason. For example, the Producer might wish to exclude Collections created
-      for a specific customer from a list of all Collections. As such, different requesters might be given
-      different lists of Collections to their requests to the same Collection Management Service.
-    **/
-    COLLECTION_INFORMATION_RESPONSE,
-   /**
-     This message is sent to a Discovery Service to request information about provided TAXII Services. Such
-     information includes what TAXII Services are offered, how the TAXII Daemons that support those
-     Services can be accessed, and what protocols and message bindings are supported. The body of this
-     message is empty.
-    **/
-   DISCOVERY_REQUEST,
-   /**
-     This message is sent from a Discovery Service in response to a TAXII Discovery Request if the request is
-     successful. If there is an error condition, a TAXII Status Message indicating the nature of the error is sent
-     instead.
-    **/
-   DISCOVERY_RESPONSE,
-   /**
-     A TAXII Inbox Message is used to push content from one entity to the TAXII Inbox Service of another
-     entity.
-    **/
-   INBOX_MESSAGE,
-   /**
-     This message is used to establish a new subscription or manage an existing subscription. The Collection
-     Management Service responds with a TAXII Manage Collection Subscription Response if the request is
-     successful and will be honored or with a TAXII Status Message if the request is being rejected or there
-     was an error.
-    **/
-   MANAGE_COLLECTION_SUBSCRIPTION_REQUEST,
-   /**
-     This message is returned in response to a TAXII Manage Collection Request Message if the requested
-     action was successfully completed.
-    **/
-   MANAGE_COLLECTION_SUBSCRIPTION_RESPONSE,
-   /**
-     The TAXII Poll Fulfillment Request is used to collect results from a Poll Service where the result set has
-     already been created. In general, this is used to collect results using Asynchronous Polling (see Section
-     3.6.2) or to collect multiple parts of a large result set over a Multi-Part Poll Exchange (see Section 3.6.1).
-    **/
-   POLL_FULFILLMENT_REQUEST,
-   /**
-     This message is sent from a Consumer to a TAXII Poll Service to request that data from the TAXII Data
-     Collection be returned to the Consumer. Poll Requests are always made against a specific TAXII Data
-     Collection. Whether or not the Consumer needs an established subscription to that TAXII Data Collection
-     in order to receive content is left to the Producer and can vary across Data Collections.
-    **/
-   POLL_REQUEST,
-   /**
-     This message is sent from a Consumer to a TAXII Poll Service to request that data from the TAXII Data
-     Collection be returned to the Consumer. Poll Requests are always made against a specific TAXII Data
-     Collection. Whether or not the Consumer needs an established subscription to that TAXII Data Collection
-     in order to receive content is left to the Producer and can vary across Data Collections.
-    **/
-   POLL_RESPONSE,
-   /**
-     A TAXII Status Message is used to indicate a condition of success or error. Status Messages are always
-     sent from a TAXII Daemon to a TAXII Client in response to a TAXII Message. A TAXII Status Message can
-     be used to indicate that an error occurred when processing a received TAXII Message. Error conditions
-     can occur because the request itself was invalid or because the recipient was unwilling or unable to
-     honor the request. The Status Message is also used in the Inbox Exchange (see Section 3.2) to indicate
-     successful reception of an Inbox Message or for Asynchronous Polling (see Section 3.6.2) to indicate a
-     Poll Request will be fulfilled at a later time.
-   **/
-   STATUS
-
-}
 
 
 
@@ -432,6 +470,7 @@ struct DiscoveryRequest{
 struct DiscoveryResponse{
     1: optional MessageStatusType status;
     2: optional list<ServiceInstance> allowedServices;
+    3: required TAXIIHeader header;
 }
 
 /**
@@ -442,10 +481,6 @@ struct DiscoveryResponse{
 struct CollectionInformationRequest{
     1: required MessageBodyType messageType = MessageBodyType.COLLECTION_INFORMATION_REQUEST;
 }
-
-
-
-
 
 
 /**

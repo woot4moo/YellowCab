@@ -380,14 +380,14 @@ public class DiscoveryResponseMessage implements org.apache.thrift.TBase<Discove
           case 1: // SERVICE_INSTANCES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list48 = iprot.readListBegin();
-                struct.serviceInstances = new ArrayList<ServiceInstance>(_list48.size);
-                for (int _i49 = 0; _i49 < _list48.size; ++_i49)
+                org.apache.thrift.protocol.TList _list56 = iprot.readListBegin();
+                struct.serviceInstances = new ArrayList<ServiceInstance>(_list56.size);
+                for (int _i57 = 0; _i57 < _list56.size; ++_i57)
                 {
-                  ServiceInstance _elem50;
-                  _elem50 = new ServiceInstance();
-                  _elem50.read(iprot);
-                  struct.serviceInstances.add(_elem50);
+                  ServiceInstance _elem58;
+                  _elem58 = new ServiceInstance();
+                  _elem58.read(iprot);
+                  struct.serviceInstances.add(_elem58);
                 }
                 iprot.readListEnd();
               }
@@ -416,9 +416,9 @@ public class DiscoveryResponseMessage implements org.apache.thrift.TBase<Discove
           oprot.writeFieldBegin(SERVICE_INSTANCES_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.serviceInstances.size()));
-            for (ServiceInstance _iter51 : struct.serviceInstances)
+            for (ServiceInstance _iter59 : struct.serviceInstances)
             {
-              _iter51.write(oprot);
+              _iter59.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -450,9 +450,9 @@ public class DiscoveryResponseMessage implements org.apache.thrift.TBase<Discove
       if (struct.isSetServiceInstances()) {
         {
           oprot.writeI32(struct.serviceInstances.size());
-          for (ServiceInstance _iter52 : struct.serviceInstances)
+          for (ServiceInstance _iter60 : struct.serviceInstances)
           {
-            _iter52.write(oprot);
+            _iter60.write(oprot);
           }
         }
       }
@@ -464,14 +464,14 @@ public class DiscoveryResponseMessage implements org.apache.thrift.TBase<Discove
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TList _list53 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.serviceInstances = new ArrayList<ServiceInstance>(_list53.size);
-          for (int _i54 = 0; _i54 < _list53.size; ++_i54)
+          org.apache.thrift.protocol.TList _list61 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.serviceInstances = new ArrayList<ServiceInstance>(_list61.size);
+          for (int _i62 = 0; _i62 < _list61.size; ++_i62)
           {
-            ServiceInstance _elem55;
-            _elem55 = new ServiceInstance();
-            _elem55.read(iprot);
-            struct.serviceInstances.add(_elem55);
+            ServiceInstance _elem63;
+            _elem63 = new ServiceInstance();
+            _elem63.read(iprot);
+            struct.serviceInstances.add(_elem63);
           }
         }
         struct.setServiceInstancesIsSet(true);

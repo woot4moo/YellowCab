@@ -678,14 +678,14 @@ public class MessageStatus implements org.apache.thrift.TBase<MessageStatus, Mes
           case 4: // STATUS_DETAILS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list32 = iprot.readListBegin();
-                struct.statusDetails = new ArrayList<MessageStatusDetail>(_list32.size);
-                for (int _i33 = 0; _i33 < _list32.size; ++_i33)
+                org.apache.thrift.protocol.TList _list40 = iprot.readListBegin();
+                struct.statusDetails = new ArrayList<MessageStatusDetail>(_list40.size);
+                for (int _i41 = 0; _i41 < _list40.size; ++_i41)
                 {
-                  MessageStatusDetail _elem34;
-                  _elem34 = new MessageStatusDetail();
-                  _elem34.read(iprot);
-                  struct.statusDetails.add(_elem34);
+                  MessageStatusDetail _elem42;
+                  _elem42 = new MessageStatusDetail();
+                  _elem42.read(iprot);
+                  struct.statusDetails.add(_elem42);
                 }
                 iprot.readListEnd();
               }
@@ -730,9 +730,9 @@ public class MessageStatus implements org.apache.thrift.TBase<MessageStatus, Mes
         oprot.writeFieldBegin(STATUS_DETAILS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.statusDetails.size()));
-          for (MessageStatusDetail _iter35 : struct.statusDetails)
+          for (MessageStatusDetail _iter43 : struct.statusDetails)
           {
-            _iter35.write(oprot);
+            _iter43.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -759,9 +759,9 @@ public class MessageStatus implements org.apache.thrift.TBase<MessageStatus, Mes
       struct.message.write(oprot);
       {
         oprot.writeI32(struct.statusDetails.size());
-        for (MessageStatusDetail _iter36 : struct.statusDetails)
+        for (MessageStatusDetail _iter44 : struct.statusDetails)
         {
-          _iter36.write(oprot);
+          _iter44.write(oprot);
         }
       }
       BitSet optionals = new BitSet();
@@ -783,14 +783,14 @@ public class MessageStatus implements org.apache.thrift.TBase<MessageStatus, Mes
       struct.message.read(iprot);
       struct.setMessageIsSet(true);
       {
-        org.apache.thrift.protocol.TList _list37 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.statusDetails = new ArrayList<MessageStatusDetail>(_list37.size);
-        for (int _i38 = 0; _i38 < _list37.size; ++_i38)
+        org.apache.thrift.protocol.TList _list45 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.statusDetails = new ArrayList<MessageStatusDetail>(_list45.size);
+        for (int _i46 = 0; _i46 < _list45.size; ++_i46)
         {
-          MessageStatusDetail _elem39;
-          _elem39 = new MessageStatusDetail();
-          _elem39.read(iprot);
-          struct.statusDetails.add(_elem39);
+          MessageStatusDetail _elem47;
+          _elem47 = new MessageStatusDetail();
+          _elem47.read(iprot);
+          struct.statusDetails.add(_elem47);
         }
       }
       struct.setStatusDetailsIsSet(true);
