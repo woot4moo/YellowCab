@@ -934,14 +934,14 @@ public class DiscoveryService {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
                 {
-                  org.apache.thrift.protocol.TSet _set64 = iprot.readSetBegin();
-                  struct.success = new HashSet<ServiceInstance>(2*_set64.size);
-                  for (int _i65 = 0; _i65 < _set64.size; ++_i65)
+                  org.apache.thrift.protocol.TSet _set200 = iprot.readSetBegin();
+                  struct.success = new HashSet<ServiceInstance>(2*_set200.size);
+                  for (int _i201 = 0; _i201 < _set200.size; ++_i201)
                   {
-                    ServiceInstance _elem66;
-                    _elem66 = new ServiceInstance();
-                    _elem66.read(iprot);
-                    struct.success.add(_elem66);
+                    ServiceInstance _elem202;
+                    _elem202 = new ServiceInstance();
+                    _elem202.read(iprot);
+                    struct.success.add(_elem202);
                   }
                   iprot.readSetEnd();
                 }
@@ -969,9 +969,9 @@ public class DiscoveryService {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (ServiceInstance _iter67 : struct.success)
+            for (ServiceInstance _iter203 : struct.success)
             {
-              _iter67.write(oprot);
+              _iter203.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1002,9 +1002,9 @@ public class DiscoveryService {
         if (struct.isSetSuccess()) {
           {
             oprot.writeI32(struct.success.size());
-            for (ServiceInstance _iter68 : struct.success)
+            for (ServiceInstance _iter204 : struct.success)
             {
-              _iter68.write(oprot);
+              _iter204.write(oprot);
             }
           }
         }
@@ -1016,14 +1016,14 @@ public class DiscoveryService {
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TSet _set69 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new HashSet<ServiceInstance>(2*_set69.size);
-            for (int _i70 = 0; _i70 < _set69.size; ++_i70)
+            org.apache.thrift.protocol.TSet _set205 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+            struct.success = new HashSet<ServiceInstance>(2*_set205.size);
+            for (int _i206 = 0; _i206 < _set205.size; ++_i206)
             {
-              ServiceInstance _elem71;
-              _elem71 = new ServiceInstance();
-              _elem71.read(iprot);
-              struct.success.add(_elem71);
+              ServiceInstance _elem207;
+              _elem207 = new ServiceInstance();
+              _elem207.read(iprot);
+              struct.success.add(_elem207);
             }
           }
           struct.setSuccessIsSet(true);

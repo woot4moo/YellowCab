@@ -33,31 +33,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *   If the Discovery Daemon detects an error that prevents processing of the message then it MUST respond with an
- *   appropriate Status Message indicating that the exchange failed. Otherwise, the Discovery Daemon
- *   passes the relevant information to its TAXII Back-end. The TAXII Back-end uses this information, along
- *   with its own access control policy, to create a list of TAXII Services to be returned or determine that the
- *   request will not be fulfilled. (E.g., the request might be denied due to a lack of authorization on the part
- *   of the requester.) If the request is honored, a list of TAXII Services is packaged into a Discovery Response
- *   which is sent back to the TAXII Client. (Not that this list might be 0-length if there are no services the
- *   requester is permitted to see.) The TAXII Client receives this message and passes the information to its
- *   own TAXII Back-end for processing. If the Discovery Daemon does not respond with a Discovery
- *   Response for any reason, the Discovery Daemon MUST respond with a Status Message indicating the
- *   reason that prevented it from returning a successful response. A TAXII Status Message MUST only be
- *   returned to indicate an error occurred or that the request was denied
+ * * This message is sent in response to a TAXII Collection Information Request if the request is successful. If
+ *   there is an error condition, a TAXII Status Message indicating the nature of the error is sent instead.
+ *   Note that the Producer is under no obligation to list all Collections and can exclude any or all Collections
+ *   from this response for any reason. For example, the Producer might wish to exclude Collections created
+ *   for a specific customer from a list of all Collections. As such, different requesters might be given
+ *   different lists of Collections to their requests to the same Collection Management Service.
  * *
  */
-public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryResponse, DiscoveryResponse._Fields>, java.io.Serializable, Cloneable, Comparable<DiscoveryResponse> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("DiscoveryResponse");
+public class CollectionInformationResponse implements org.apache.thrift.TBase<CollectionInformationResponse, CollectionInformationResponse._Fields>, java.io.Serializable, Cloneable, Comparable<CollectionInformationResponse> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("CollectionInformationResponse");
 
   private static final org.apache.thrift.protocol.TField HEADER_FIELD_DESC = new org.apache.thrift.protocol.TField("header", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)2);
-  private static final org.apache.thrift.protocol.TField ALLOWED_SERVICES_FIELD_DESC = new org.apache.thrift.protocol.TField("allowedServices", org.apache.thrift.protocol.TType.LIST, (short)3);
+  private static final org.apache.thrift.protocol.TField COLLECTION_INFORMATIONS_FIELD_DESC = new org.apache.thrift.protocol.TField("collectionInformations", org.apache.thrift.protocol.TType.LIST, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new DiscoveryResponseStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new DiscoveryResponseTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new CollectionInformationResponseStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new CollectionInformationResponseTupleSchemeFactory());
   }
 
   public TAXIIHeader header; // required
@@ -66,7 +60,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
    * @see MessageStatusType
    */
   public MessageStatusType status; // optional
-  public List<ServiceInstance> allowedServices; // optional
+  public List<CollectionInformation> collectionInformations; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -76,7 +70,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
      * @see MessageStatusType
      */
     STATUS((short)2, "status"),
-    ALLOWED_SERVICES((short)3, "allowedServices");
+    COLLECTION_INFORMATIONS((short)3, "collectionInformations");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -95,8 +89,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           return HEADER;
         case 2: // STATUS
           return STATUS;
-        case 3: // ALLOWED_SERVICES
-          return ALLOWED_SERVICES;
+        case 3: // COLLECTION_INFORMATIONS
+          return COLLECTION_INFORMATIONS;
         default:
           return null;
       }
@@ -137,7 +131,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
   }
 
   // isset id assignments
-  private _Fields optionals[] = {_Fields.STATUS,_Fields.ALLOWED_SERVICES};
+  private _Fields optionals[] = {_Fields.STATUS,_Fields.COLLECTION_INFORMATIONS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -145,17 +139,17 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, TAXIIHeader.class)));
     tmpMap.put(_Fields.STATUS, new org.apache.thrift.meta_data.FieldMetaData("status", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageStatusType.class)));
-    tmpMap.put(_Fields.ALLOWED_SERVICES, new org.apache.thrift.meta_data.FieldMetaData("allowedServices", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+    tmpMap.put(_Fields.COLLECTION_INFORMATIONS, new org.apache.thrift.meta_data.FieldMetaData("collectionInformations", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-            new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ServiceInstance.class))));
+            new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, CollectionInformation.class))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(DiscoveryResponse.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(CollectionInformationResponse.class, metaDataMap);
   }
 
-  public DiscoveryResponse() {
+  public CollectionInformationResponse() {
   }
 
-  public DiscoveryResponse(
+  public CollectionInformationResponse(
     TAXIIHeader header)
   {
     this();
@@ -165,38 +159,38 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public DiscoveryResponse(DiscoveryResponse other) {
+  public CollectionInformationResponse(CollectionInformationResponse other) {
     if (other.isSetHeader()) {
       this.header = new TAXIIHeader(other.header);
     }
     if (other.isSetStatus()) {
       this.status = other.status;
     }
-    if (other.isSetAllowedServices()) {
-      List<ServiceInstance> __this__allowedServices = new ArrayList<ServiceInstance>(other.allowedServices.size());
-      for (ServiceInstance other_element : other.allowedServices) {
-        __this__allowedServices.add(new ServiceInstance(other_element));
+    if (other.isSetCollectionInformations()) {
+      List<CollectionInformation> __this__collectionInformations = new ArrayList<CollectionInformation>(other.collectionInformations.size());
+      for (CollectionInformation other_element : other.collectionInformations) {
+        __this__collectionInformations.add(new CollectionInformation(other_element));
       }
-      this.allowedServices = __this__allowedServices;
+      this.collectionInformations = __this__collectionInformations;
     }
   }
 
-  public DiscoveryResponse deepCopy() {
-    return new DiscoveryResponse(this);
+  public CollectionInformationResponse deepCopy() {
+    return new CollectionInformationResponse(this);
   }
 
   @Override
   public void clear() {
     this.header = null;
     this.status = null;
-    this.allowedServices = null;
+    this.collectionInformations = null;
   }
 
   public TAXIIHeader getHeader() {
     return this.header;
   }
 
-  public DiscoveryResponse setHeader(TAXIIHeader header) {
+  public CollectionInformationResponse setHeader(TAXIIHeader header) {
     this.header = header;
     return this;
   }
@@ -228,7 +222,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
    * 
    * @see MessageStatusType
    */
-  public DiscoveryResponse setStatus(MessageStatusType status) {
+  public CollectionInformationResponse setStatus(MessageStatusType status) {
     this.status = status;
     return this;
   }
@@ -248,42 +242,42 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     }
   }
 
-  public int getAllowedServicesSize() {
-    return (this.allowedServices == null) ? 0 : this.allowedServices.size();
+  public int getCollectionInformationsSize() {
+    return (this.collectionInformations == null) ? 0 : this.collectionInformations.size();
   }
 
-  public java.util.Iterator<ServiceInstance> getAllowedServicesIterator() {
-    return (this.allowedServices == null) ? null : this.allowedServices.iterator();
+  public java.util.Iterator<CollectionInformation> getCollectionInformationsIterator() {
+    return (this.collectionInformations == null) ? null : this.collectionInformations.iterator();
   }
 
-  public void addToAllowedServices(ServiceInstance elem) {
-    if (this.allowedServices == null) {
-      this.allowedServices = new ArrayList<ServiceInstance>();
+  public void addToCollectionInformations(CollectionInformation elem) {
+    if (this.collectionInformations == null) {
+      this.collectionInformations = new ArrayList<CollectionInformation>();
     }
-    this.allowedServices.add(elem);
+    this.collectionInformations.add(elem);
   }
 
-  public List<ServiceInstance> getAllowedServices() {
-    return this.allowedServices;
+  public List<CollectionInformation> getCollectionInformations() {
+    return this.collectionInformations;
   }
 
-  public DiscoveryResponse setAllowedServices(List<ServiceInstance> allowedServices) {
-    this.allowedServices = allowedServices;
+  public CollectionInformationResponse setCollectionInformations(List<CollectionInformation> collectionInformations) {
+    this.collectionInformations = collectionInformations;
     return this;
   }
 
-  public void unsetAllowedServices() {
-    this.allowedServices = null;
+  public void unsetCollectionInformations() {
+    this.collectionInformations = null;
   }
 
-  /** Returns true if field allowedServices is set (has been assigned a value) and false otherwise */
-  public boolean isSetAllowedServices() {
-    return this.allowedServices != null;
+  /** Returns true if field collectionInformations is set (has been assigned a value) and false otherwise */
+  public boolean isSetCollectionInformations() {
+    return this.collectionInformations != null;
   }
 
-  public void setAllowedServicesIsSet(boolean value) {
+  public void setCollectionInformationsIsSet(boolean value) {
     if (!value) {
-      this.allowedServices = null;
+      this.collectionInformations = null;
     }
   }
 
@@ -305,11 +299,11 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       break;
 
-    case ALLOWED_SERVICES:
+    case COLLECTION_INFORMATIONS:
       if (value == null) {
-        unsetAllowedServices();
+        unsetCollectionInformations();
       } else {
-        setAllowedServices((List<ServiceInstance>)value);
+        setCollectionInformations((List<CollectionInformation>)value);
       }
       break;
 
@@ -324,8 +318,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     case STATUS:
       return getStatus();
 
-    case ALLOWED_SERVICES:
-      return getAllowedServices();
+    case COLLECTION_INFORMATIONS:
+      return getCollectionInformations();
 
     }
     throw new IllegalStateException();
@@ -342,8 +336,8 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       return isSetHeader();
     case STATUS:
       return isSetStatus();
-    case ALLOWED_SERVICES:
-      return isSetAllowedServices();
+    case COLLECTION_INFORMATIONS:
+      return isSetCollectionInformations();
     }
     throw new IllegalStateException();
   }
@@ -352,12 +346,12 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof DiscoveryResponse)
-      return this.equals((DiscoveryResponse)that);
+    if (that instanceof CollectionInformationResponse)
+      return this.equals((CollectionInformationResponse)that);
     return false;
   }
 
-  public boolean equals(DiscoveryResponse that) {
+  public boolean equals(CollectionInformationResponse that) {
     if (that == null)
       return false;
 
@@ -379,12 +373,12 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
         return false;
     }
 
-    boolean this_present_allowedServices = true && this.isSetAllowedServices();
-    boolean that_present_allowedServices = true && that.isSetAllowedServices();
-    if (this_present_allowedServices || that_present_allowedServices) {
-      if (!(this_present_allowedServices && that_present_allowedServices))
+    boolean this_present_collectionInformations = true && this.isSetCollectionInformations();
+    boolean that_present_collectionInformations = true && that.isSetCollectionInformations();
+    if (this_present_collectionInformations || that_present_collectionInformations) {
+      if (!(this_present_collectionInformations && that_present_collectionInformations))
         return false;
-      if (!this.allowedServices.equals(that.allowedServices))
+      if (!this.collectionInformations.equals(that.collectionInformations))
         return false;
     }
 
@@ -397,7 +391,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
   }
 
   @Override
-  public int compareTo(DiscoveryResponse other) {
+  public int compareTo(CollectionInformationResponse other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
@@ -424,12 +418,12 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetAllowedServices()).compareTo(other.isSetAllowedServices());
+    lastComparison = Boolean.valueOf(isSetCollectionInformations()).compareTo(other.isSetCollectionInformations());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetAllowedServices()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.allowedServices, other.allowedServices);
+    if (isSetCollectionInformations()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.collectionInformations, other.collectionInformations);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -451,7 +445,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("DiscoveryResponse(");
+    StringBuilder sb = new StringBuilder("CollectionInformationResponse(");
     boolean first = true;
 
     sb.append("header:");
@@ -471,13 +465,13 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       first = false;
     }
-    if (isSetAllowedServices()) {
+    if (isSetCollectionInformations()) {
       if (!first) sb.append(", ");
-      sb.append("allowedServices:");
-      if (this.allowedServices == null) {
+      sb.append("collectionInformations:");
+      if (this.collectionInformations == null) {
         sb.append("null");
       } else {
-        sb.append(this.allowedServices);
+        sb.append(this.collectionInformations);
       }
       first = false;
     }
@@ -512,15 +506,15 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
     }
   }
 
-  private static class DiscoveryResponseStandardSchemeFactory implements SchemeFactory {
-    public DiscoveryResponseStandardScheme getScheme() {
-      return new DiscoveryResponseStandardScheme();
+  private static class CollectionInformationResponseStandardSchemeFactory implements SchemeFactory {
+    public CollectionInformationResponseStandardScheme getScheme() {
+      return new CollectionInformationResponseStandardScheme();
     }
   }
 
-  private static class DiscoveryResponseStandardScheme extends StandardScheme<DiscoveryResponse> {
+  private static class CollectionInformationResponseStandardScheme extends StandardScheme<CollectionInformationResponse> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, DiscoveryResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, CollectionInformationResponse struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -547,21 +541,21 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // ALLOWED_SERVICES
+          case 3: // COLLECTION_INFORMATIONS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list48 = iprot.readListBegin();
-                struct.allowedServices = new ArrayList<ServiceInstance>(_list48.size);
-                for (int _i49 = 0; _i49 < _list48.size; ++_i49)
+                org.apache.thrift.protocol.TList _list160 = iprot.readListBegin();
+                struct.collectionInformations = new ArrayList<CollectionInformation>(_list160.size);
+                for (int _i161 = 0; _i161 < _list160.size; ++_i161)
                 {
-                  ServiceInstance _elem50;
-                  _elem50 = new ServiceInstance();
-                  _elem50.read(iprot);
-                  struct.allowedServices.add(_elem50);
+                  CollectionInformation _elem162;
+                  _elem162 = new CollectionInformation();
+                  _elem162.read(iprot);
+                  struct.collectionInformations.add(_elem162);
                 }
                 iprot.readListEnd();
               }
-              struct.setAllowedServicesIsSet(true);
+              struct.setCollectionInformationsIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -577,7 +571,7 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, DiscoveryResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, CollectionInformationResponse struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
@@ -593,14 +587,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           oprot.writeFieldEnd();
         }
       }
-      if (struct.allowedServices != null) {
-        if (struct.isSetAllowedServices()) {
-          oprot.writeFieldBegin(ALLOWED_SERVICES_FIELD_DESC);
+      if (struct.collectionInformations != null) {
+        if (struct.isSetCollectionInformations()) {
+          oprot.writeFieldBegin(COLLECTION_INFORMATIONS_FIELD_DESC);
           {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.allowedServices.size()));
-            for (ServiceInstance _iter51 : struct.allowedServices)
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.collectionInformations.size()));
+            for (CollectionInformation _iter163 : struct.collectionInformations)
             {
-              _iter51.write(oprot);
+              _iter163.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -613,42 +607,42 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
 
   }
 
-  private static class DiscoveryResponseTupleSchemeFactory implements SchemeFactory {
-    public DiscoveryResponseTupleScheme getScheme() {
-      return new DiscoveryResponseTupleScheme();
+  private static class CollectionInformationResponseTupleSchemeFactory implements SchemeFactory {
+    public CollectionInformationResponseTupleScheme getScheme() {
+      return new CollectionInformationResponseTupleScheme();
     }
   }
 
-  private static class DiscoveryResponseTupleScheme extends TupleScheme<DiscoveryResponse> {
+  private static class CollectionInformationResponseTupleScheme extends TupleScheme<CollectionInformationResponse> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, DiscoveryResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, CollectionInformationResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       struct.header.write(oprot);
       BitSet optionals = new BitSet();
       if (struct.isSetStatus()) {
         optionals.set(0);
       }
-      if (struct.isSetAllowedServices()) {
+      if (struct.isSetCollectionInformations()) {
         optionals.set(1);
       }
       oprot.writeBitSet(optionals, 2);
       if (struct.isSetStatus()) {
         oprot.writeI32(struct.status.getValue());
       }
-      if (struct.isSetAllowedServices()) {
+      if (struct.isSetCollectionInformations()) {
         {
-          oprot.writeI32(struct.allowedServices.size());
-          for (ServiceInstance _iter52 : struct.allowedServices)
+          oprot.writeI32(struct.collectionInformations.size());
+          for (CollectionInformation _iter164 : struct.collectionInformations)
           {
-            _iter52.write(oprot);
+            _iter164.write(oprot);
           }
         }
       }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, DiscoveryResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, CollectionInformationResponse struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       struct.header = new TAXIIHeader();
       struct.header.read(iprot);
@@ -660,17 +654,17 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list53 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.allowedServices = new ArrayList<ServiceInstance>(_list53.size);
-          for (int _i54 = 0; _i54 < _list53.size; ++_i54)
+          org.apache.thrift.protocol.TList _list165 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.collectionInformations = new ArrayList<CollectionInformation>(_list165.size);
+          for (int _i166 = 0; _i166 < _list165.size; ++_i166)
           {
-            ServiceInstance _elem55;
-            _elem55 = new ServiceInstance();
-            _elem55.read(iprot);
-            struct.allowedServices.add(_elem55);
+            CollectionInformation _elem167;
+            _elem167 = new CollectionInformation();
+            _elem167.read(iprot);
+            struct.collectionInformations.add(_elem167);
           }
         }
-        struct.setAllowedServicesIsSet(true);
+        struct.setCollectionInformationsIsSet(true);
       }
     }
   }

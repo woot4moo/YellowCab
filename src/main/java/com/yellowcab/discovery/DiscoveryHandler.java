@@ -38,7 +38,7 @@ public class DiscoveryHandler implements DiscoveryService.Iface{
         inboxServiceContents.add(new InboxServiceContent(new LinkedList<String>()));
 
         List<Query> queries = new LinkedList<>();
-        queries.add(new Query("formatId1"));
+        queries.add(new Query("formatId1","expression"));
         List<String> bindings = new LinkedList<>();
         bindings.add("first");
         bindings.add("second");
