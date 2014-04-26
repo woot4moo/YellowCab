@@ -609,13 +609,13 @@ public class PollingInstance implements org.apache.thrift.TBase<PollingInstance,
           case 3: // POLL_MESSAGE_BINDINGS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set80 = iprot.readSetBegin();
-                struct.pollMessageBindings = new HashSet<String>(2*_set80.size);
-                for (int _i81 = 0; _i81 < _set80.size; ++_i81)
+                org.apache.thrift.protocol.TSet _set88 = iprot.readSetBegin();
+                struct.pollMessageBindings = new HashSet<String>(2*_set88.size);
+                for (int _i89 = 0; _i89 < _set88.size; ++_i89)
                 {
-                  String _elem82;
-                  _elem82 = iprot.readString();
-                  struct.pollMessageBindings.add(_elem82);
+                  String _elem90;
+                  _elem90 = iprot.readString();
+                  struct.pollMessageBindings.add(_elem90);
                 }
                 iprot.readSetEnd();
               }
@@ -653,9 +653,9 @@ public class PollingInstance implements org.apache.thrift.TBase<PollingInstance,
         oprot.writeFieldBegin(POLL_MESSAGE_BINDINGS_FIELD_DESC);
         {
           oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, struct.pollMessageBindings.size()));
-          for (String _iter83 : struct.pollMessageBindings)
+          for (String _iter91 : struct.pollMessageBindings)
           {
-            oprot.writeString(_iter83);
+            oprot.writeString(_iter91);
           }
           oprot.writeSetEnd();
         }
@@ -682,9 +682,9 @@ public class PollingInstance implements org.apache.thrift.TBase<PollingInstance,
       oprot.writeString(struct.pollAddress);
       {
         oprot.writeI32(struct.pollMessageBindings.size());
-        for (String _iter84 : struct.pollMessageBindings)
+        for (String _iter92 : struct.pollMessageBindings)
         {
-          oprot.writeString(_iter84);
+          oprot.writeString(_iter92);
         }
       }
     }
@@ -697,13 +697,13 @@ public class PollingInstance implements org.apache.thrift.TBase<PollingInstance,
       struct.pollAddress = iprot.readString();
       struct.setPollAddressIsSet(true);
       {
-        org.apache.thrift.protocol.TSet _set85 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.pollMessageBindings = new HashSet<String>(2*_set85.size);
-        for (int _i86 = 0; _i86 < _set85.size; ++_i86)
+        org.apache.thrift.protocol.TSet _set93 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.pollMessageBindings = new HashSet<String>(2*_set93.size);
+        for (int _i94 = 0; _i94 < _set93.size; ++_i94)
         {
-          String _elem87;
-          _elem87 = iprot.readString();
-          struct.pollMessageBindings.add(_elem87);
+          String _elem95;
+          _elem95 = iprot.readString();
+          struct.pollMessageBindings.add(_elem95);
         }
       }
       struct.setPollMessageBindingsIsSet(true);

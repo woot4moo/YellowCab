@@ -509,13 +509,13 @@ public class PushMethod implements org.apache.thrift.TBase<PushMethod, PushMetho
           case 2: // PUSH_MESSAGE_BINDINGS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set72 = iprot.readSetBegin();
-                struct.pushMessageBindings = new HashSet<String>(2*_set72.size);
-                for (int _i73 = 0; _i73 < _set72.size; ++_i73)
+                org.apache.thrift.protocol.TSet _set80 = iprot.readSetBegin();
+                struct.pushMessageBindings = new HashSet<String>(2*_set80.size);
+                for (int _i81 = 0; _i81 < _set80.size; ++_i81)
                 {
-                  String _elem74;
-                  _elem74 = iprot.readString();
-                  struct.pushMessageBindings.add(_elem74);
+                  String _elem82;
+                  _elem82 = iprot.readString();
+                  struct.pushMessageBindings.add(_elem82);
                 }
                 iprot.readSetEnd();
               }
@@ -548,9 +548,9 @@ public class PushMethod implements org.apache.thrift.TBase<PushMethod, PushMetho
         oprot.writeFieldBegin(PUSH_MESSAGE_BINDINGS_FIELD_DESC);
         {
           oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, struct.pushMessageBindings.size()));
-          for (String _iter75 : struct.pushMessageBindings)
+          for (String _iter83 : struct.pushMessageBindings)
           {
-            oprot.writeString(_iter75);
+            oprot.writeString(_iter83);
           }
           oprot.writeSetEnd();
         }
@@ -576,9 +576,9 @@ public class PushMethod implements org.apache.thrift.TBase<PushMethod, PushMetho
       oprot.writeString(struct.pushProtocol);
       {
         oprot.writeI32(struct.pushMessageBindings.size());
-        for (String _iter76 : struct.pushMessageBindings)
+        for (String _iter84 : struct.pushMessageBindings)
         {
-          oprot.writeString(_iter76);
+          oprot.writeString(_iter84);
         }
       }
     }
@@ -589,13 +589,13 @@ public class PushMethod implements org.apache.thrift.TBase<PushMethod, PushMetho
       struct.pushProtocol = iprot.readString();
       struct.setPushProtocolIsSet(true);
       {
-        org.apache.thrift.protocol.TSet _set77 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.pushMessageBindings = new HashSet<String>(2*_set77.size);
-        for (int _i78 = 0; _i78 < _set77.size; ++_i78)
+        org.apache.thrift.protocol.TSet _set85 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.pushMessageBindings = new HashSet<String>(2*_set85.size);
+        for (int _i86 = 0; _i86 < _set85.size; ++_i86)
         {
-          String _elem79;
-          _elem79 = iprot.readString();
-          struct.pushMessageBindings.add(_elem79);
+          String _elem87;
+          _elem87 = iprot.readString();
+          struct.pushMessageBindings.add(_elem87);
         }
       }
       struct.setPushMessageBindingsIsSet(true);

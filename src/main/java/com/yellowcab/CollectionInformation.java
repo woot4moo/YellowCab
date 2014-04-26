@@ -1584,14 +1584,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           case 5: // SUPPORTED_CONTENT
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set112 = iprot.readSetBegin();
-                struct.supportedContent = new HashSet<SupportedContent>(2*_set112.size);
-                for (int _i113 = 0; _i113 < _set112.size; ++_i113)
+                org.apache.thrift.protocol.TSet _set120 = iprot.readSetBegin();
+                struct.supportedContent = new HashSet<SupportedContent>(2*_set120.size);
+                for (int _i121 = 0; _i121 < _set120.size; ++_i121)
                 {
-                  SupportedContent _elem114;
-                  _elem114 = new SupportedContent();
-                  _elem114.read(iprot);
-                  struct.supportedContent.add(_elem114);
+                  SupportedContent _elem122;
+                  _elem122 = new SupportedContent();
+                  _elem122.read(iprot);
+                  struct.supportedContent.add(_elem122);
                 }
                 iprot.readSetEnd();
               }
@@ -1611,14 +1611,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           case 7: // PUSH_METHODS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set115 = iprot.readSetBegin();
-                struct.pushMethods = new HashSet<PushMethod>(2*_set115.size);
-                for (int _i116 = 0; _i116 < _set115.size; ++_i116)
+                org.apache.thrift.protocol.TSet _set123 = iprot.readSetBegin();
+                struct.pushMethods = new HashSet<PushMethod>(2*_set123.size);
+                for (int _i124 = 0; _i124 < _set123.size; ++_i124)
                 {
-                  PushMethod _elem117;
-                  _elem117 = new PushMethod();
-                  _elem117.read(iprot);
-                  struct.pushMethods.add(_elem117);
+                  PushMethod _elem125;
+                  _elem125 = new PushMethod();
+                  _elem125.read(iprot);
+                  struct.pushMethods.add(_elem125);
                 }
                 iprot.readSetEnd();
               }
@@ -1630,14 +1630,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           case 8: // POLLING_SERVICE_INSTANCES
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set118 = iprot.readSetBegin();
-                struct.pollingServiceInstances = new HashSet<PollingInstance>(2*_set118.size);
-                for (int _i119 = 0; _i119 < _set118.size; ++_i119)
+                org.apache.thrift.protocol.TSet _set126 = iprot.readSetBegin();
+                struct.pollingServiceInstances = new HashSet<PollingInstance>(2*_set126.size);
+                for (int _i127 = 0; _i127 < _set126.size; ++_i127)
                 {
-                  PollingInstance _elem120;
-                  _elem120 = new PollingInstance();
-                  _elem120.read(iprot);
-                  struct.pollingServiceInstances.add(_elem120);
+                  PollingInstance _elem128;
+                  _elem128 = new PollingInstance();
+                  _elem128.read(iprot);
+                  struct.pollingServiceInstances.add(_elem128);
                 }
                 iprot.readSetEnd();
               }
@@ -1649,14 +1649,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           case 9: // SUBSCRIPTION_METHODS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set121 = iprot.readSetBegin();
-                struct.subscriptionMethods = new HashSet<SubscriptionMethod>(2*_set121.size);
-                for (int _i122 = 0; _i122 < _set121.size; ++_i122)
+                org.apache.thrift.protocol.TSet _set129 = iprot.readSetBegin();
+                struct.subscriptionMethods = new HashSet<SubscriptionMethod>(2*_set129.size);
+                for (int _i130 = 0; _i130 < _set129.size; ++_i130)
                 {
-                  SubscriptionMethod _elem123;
-                  _elem123 = new SubscriptionMethod();
-                  _elem123.read(iprot);
-                  struct.subscriptionMethods.add(_elem123);
+                  SubscriptionMethod _elem131;
+                  _elem131 = new SubscriptionMethod();
+                  _elem131.read(iprot);
+                  struct.subscriptionMethods.add(_elem131);
                 }
                 iprot.readSetEnd();
               }
@@ -1668,14 +1668,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           case 10: // RECEIVING_INBOX_SERVICES
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set124 = iprot.readSetBegin();
-                struct.receivingInboxServices = new HashSet<ReceivingInboxService>(2*_set124.size);
-                for (int _i125 = 0; _i125 < _set124.size; ++_i125)
+                org.apache.thrift.protocol.TSet _set132 = iprot.readSetBegin();
+                struct.receivingInboxServices = new HashSet<ReceivingInboxService>(2*_set132.size);
+                for (int _i133 = 0; _i133 < _set132.size; ++_i133)
                 {
-                  ReceivingInboxService _elem126;
-                  _elem126 = new ReceivingInboxService();
-                  _elem126.read(iprot);
-                  struct.receivingInboxServices.add(_elem126);
+                  ReceivingInboxService _elem134;
+                  _elem134 = new ReceivingInboxService();
+                  _elem134.read(iprot);
+                  struct.receivingInboxServices.add(_elem134);
                 }
                 iprot.readSetEnd();
               }
@@ -1726,9 +1726,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           oprot.writeFieldBegin(SUPPORTED_CONTENT_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.supportedContent.size()));
-            for (SupportedContent _iter127 : struct.supportedContent)
+            for (SupportedContent _iter135 : struct.supportedContent)
             {
-              _iter127.write(oprot);
+              _iter135.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1745,9 +1745,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           oprot.writeFieldBegin(PUSH_METHODS_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.pushMethods.size()));
-            for (PushMethod _iter128 : struct.pushMethods)
+            for (PushMethod _iter136 : struct.pushMethods)
             {
-              _iter128.write(oprot);
+              _iter136.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1759,9 +1759,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           oprot.writeFieldBegin(POLLING_SERVICE_INSTANCES_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.pollingServiceInstances.size()));
-            for (PollingInstance _iter129 : struct.pollingServiceInstances)
+            for (PollingInstance _iter137 : struct.pollingServiceInstances)
             {
-              _iter129.write(oprot);
+              _iter137.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1773,9 +1773,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           oprot.writeFieldBegin(SUBSCRIPTION_METHODS_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.subscriptionMethods.size()));
-            for (SubscriptionMethod _iter130 : struct.subscriptionMethods)
+            for (SubscriptionMethod _iter138 : struct.subscriptionMethods)
             {
-              _iter130.write(oprot);
+              _iter138.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1787,9 +1787,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
           oprot.writeFieldBegin(RECEIVING_INBOX_SERVICES_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.receivingInboxServices.size()));
-            for (ReceivingInboxService _iter131 : struct.receivingInboxServices)
+            for (ReceivingInboxService _iter139 : struct.receivingInboxServices)
             {
-              _iter131.write(oprot);
+              _iter139.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -1850,9 +1850,9 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
       if (struct.isSetSupportedContent()) {
         {
           oprot.writeI32(struct.supportedContent.size());
-          for (SupportedContent _iter132 : struct.supportedContent)
+          for (SupportedContent _iter140 : struct.supportedContent)
           {
-            _iter132.write(oprot);
+            _iter140.write(oprot);
           }
         }
       }
@@ -1862,36 +1862,36 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
       if (struct.isSetPushMethods()) {
         {
           oprot.writeI32(struct.pushMethods.size());
-          for (PushMethod _iter133 : struct.pushMethods)
+          for (PushMethod _iter141 : struct.pushMethods)
           {
-            _iter133.write(oprot);
+            _iter141.write(oprot);
           }
         }
       }
       if (struct.isSetPollingServiceInstances()) {
         {
           oprot.writeI32(struct.pollingServiceInstances.size());
-          for (PollingInstance _iter134 : struct.pollingServiceInstances)
+          for (PollingInstance _iter142 : struct.pollingServiceInstances)
           {
-            _iter134.write(oprot);
+            _iter142.write(oprot);
           }
         }
       }
       if (struct.isSetSubscriptionMethods()) {
         {
           oprot.writeI32(struct.subscriptionMethods.size());
-          for (SubscriptionMethod _iter135 : struct.subscriptionMethods)
+          for (SubscriptionMethod _iter143 : struct.subscriptionMethods)
           {
-            _iter135.write(oprot);
+            _iter143.write(oprot);
           }
         }
       }
       if (struct.isSetReceivingInboxServices()) {
         {
           oprot.writeI32(struct.receivingInboxServices.size());
-          for (ReceivingInboxService _iter136 : struct.receivingInboxServices)
+          for (ReceivingInboxService _iter144 : struct.receivingInboxServices)
           {
-            _iter136.write(oprot);
+            _iter144.write(oprot);
           }
         }
       }
@@ -1915,14 +1915,14 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
       }
       if (incoming.get(2)) {
         {
-          org.apache.thrift.protocol.TSet _set137 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.supportedContent = new HashSet<SupportedContent>(2*_set137.size);
-          for (int _i138 = 0; _i138 < _set137.size; ++_i138)
+          org.apache.thrift.protocol.TSet _set145 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.supportedContent = new HashSet<SupportedContent>(2*_set145.size);
+          for (int _i146 = 0; _i146 < _set145.size; ++_i146)
           {
-            SupportedContent _elem139;
-            _elem139 = new SupportedContent();
-            _elem139.read(iprot);
-            struct.supportedContent.add(_elem139);
+            SupportedContent _elem147;
+            _elem147 = new SupportedContent();
+            _elem147.read(iprot);
+            struct.supportedContent.add(_elem147);
           }
         }
         struct.setSupportedContentIsSet(true);
@@ -1933,56 +1933,56 @@ public class CollectionInformation implements org.apache.thrift.TBase<Collection
       }
       if (incoming.get(4)) {
         {
-          org.apache.thrift.protocol.TSet _set140 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.pushMethods = new HashSet<PushMethod>(2*_set140.size);
-          for (int _i141 = 0; _i141 < _set140.size; ++_i141)
+          org.apache.thrift.protocol.TSet _set148 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.pushMethods = new HashSet<PushMethod>(2*_set148.size);
+          for (int _i149 = 0; _i149 < _set148.size; ++_i149)
           {
-            PushMethod _elem142;
-            _elem142 = new PushMethod();
-            _elem142.read(iprot);
-            struct.pushMethods.add(_elem142);
+            PushMethod _elem150;
+            _elem150 = new PushMethod();
+            _elem150.read(iprot);
+            struct.pushMethods.add(_elem150);
           }
         }
         struct.setPushMethodsIsSet(true);
       }
       if (incoming.get(5)) {
         {
-          org.apache.thrift.protocol.TSet _set143 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.pollingServiceInstances = new HashSet<PollingInstance>(2*_set143.size);
-          for (int _i144 = 0; _i144 < _set143.size; ++_i144)
+          org.apache.thrift.protocol.TSet _set151 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.pollingServiceInstances = new HashSet<PollingInstance>(2*_set151.size);
+          for (int _i152 = 0; _i152 < _set151.size; ++_i152)
           {
-            PollingInstance _elem145;
-            _elem145 = new PollingInstance();
-            _elem145.read(iprot);
-            struct.pollingServiceInstances.add(_elem145);
+            PollingInstance _elem153;
+            _elem153 = new PollingInstance();
+            _elem153.read(iprot);
+            struct.pollingServiceInstances.add(_elem153);
           }
         }
         struct.setPollingServiceInstancesIsSet(true);
       }
       if (incoming.get(6)) {
         {
-          org.apache.thrift.protocol.TSet _set146 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.subscriptionMethods = new HashSet<SubscriptionMethod>(2*_set146.size);
-          for (int _i147 = 0; _i147 < _set146.size; ++_i147)
+          org.apache.thrift.protocol.TSet _set154 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.subscriptionMethods = new HashSet<SubscriptionMethod>(2*_set154.size);
+          for (int _i155 = 0; _i155 < _set154.size; ++_i155)
           {
-            SubscriptionMethod _elem148;
-            _elem148 = new SubscriptionMethod();
-            _elem148.read(iprot);
-            struct.subscriptionMethods.add(_elem148);
+            SubscriptionMethod _elem156;
+            _elem156 = new SubscriptionMethod();
+            _elem156.read(iprot);
+            struct.subscriptionMethods.add(_elem156);
           }
         }
         struct.setSubscriptionMethodsIsSet(true);
       }
       if (incoming.get(7)) {
         {
-          org.apache.thrift.protocol.TSet _set149 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.receivingInboxServices = new HashSet<ReceivingInboxService>(2*_set149.size);
-          for (int _i150 = 0; _i150 < _set149.size; ++_i150)
+          org.apache.thrift.protocol.TSet _set157 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.receivingInboxServices = new HashSet<ReceivingInboxService>(2*_set157.size);
+          for (int _i158 = 0; _i158 < _set157.size; ++_i158)
           {
-            ReceivingInboxService _elem151;
-            _elem151 = new ReceivingInboxService();
-            _elem151.read(iprot);
-            struct.receivingInboxServices.add(_elem151);
+            ReceivingInboxService _elem159;
+            _elem159 = new ReceivingInboxService();
+            _elem159.read(iprot);
+            struct.receivingInboxServices.add(_elem159);
           }
         }
         struct.setReceivingInboxServicesIsSet(true);

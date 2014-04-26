@@ -35,8 +35,9 @@ import org.slf4j.LoggerFactory;
 public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, StatusMessage._Fields>, java.io.Serializable, Cloneable, Comparable<StatusMessage> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("StatusMessage");
 
-  private static final org.apache.thrift.protocol.TField MESSAGE_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("messageStatus", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField BODY_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("bodyType", org.apache.thrift.protocol.TType.I32, (short)2);
+  private static final org.apache.thrift.protocol.TField STATUS_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("statusType", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField STATUS_DETAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("statusDetail", org.apache.thrift.protocol.TType.I32, (short)2);
+  private static final org.apache.thrift.protocol.TField MESSAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("message", org.apache.thrift.protocol.TType.STRING, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -44,21 +45,69 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
     schemes.put(TupleScheme.class, new StatusMessageTupleSchemeFactory());
   }
 
-  public MessageStatus messageStatus; // required
   /**
-   * 
-   * @see MessageBodyType
+   * * If present, indicates the Result Part that is being collected.
+   *   see: MessageStatusType
+   * *
    */
-  public MessageBodyType bodyType; // required
+  public String statusType; // required
+  /**
+   * * A field for additional information about this status in a
+   *   machine-readable format. Contents of the Status Detail field
+   *   consist of zero or more name-value pairs. (The details of how
+   *   these name-value pairs are structured in a particular message
+   *   binding are provided in the appropriate TAXII Message Binding
+   *   Specification.) The individual Status Types indicate the
+   *   standard names and appropriate values for this these sun-
+   *   fields (if any). Values may consist of structured content. Third
+   *   parties MAY define their own Status Detail sub-fields.
+   *   Internal key value pair struct is being used here.
+   * *
+   * 
+   * @see MessageStatusType
+   */
+  public MessageStatusType statusDetail; // optional
+  /**
+   * * Additional information for the status. There is no expectation
+   *   that this field be interpretable by a machine; it is instead
+   *   targeted to a human operator.
+   * 
+   * *
+   */
+  public String message; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    MESSAGE_STATUS((short)1, "messageStatus"),
     /**
-     * 
-     * @see MessageBodyType
+     * * If present, indicates the Result Part that is being collected.
+     *   see: MessageStatusType
+     * *
      */
-    BODY_TYPE((short)2, "bodyType");
+    STATUS_TYPE((short)1, "statusType"),
+    /**
+     * * A field for additional information about this status in a
+     *   machine-readable format. Contents of the Status Detail field
+     *   consist of zero or more name-value pairs. (The details of how
+     *   these name-value pairs are structured in a particular message
+     *   binding are provided in the appropriate TAXII Message Binding
+     *   Specification.) The individual Status Types indicate the
+     *   standard names and appropriate values for this these sun-
+     *   fields (if any). Values may consist of structured content. Third
+     *   parties MAY define their own Status Detail sub-fields.
+     *   Internal key value pair struct is being used here.
+     * *
+     * 
+     * @see MessageStatusType
+     */
+    STATUS_DETAIL((short)2, "statusDetail"),
+    /**
+     * * Additional information for the status. There is no expectation
+     *   that this field be interpretable by a machine; it is instead
+     *   targeted to a human operator.
+     * 
+     * *
+     */
+    MESSAGE((short)3, "message");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -73,10 +122,12 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // MESSAGE_STATUS
-          return MESSAGE_STATUS;
-        case 2: // BODY_TYPE
-          return BODY_TYPE;
+        case 1: // STATUS_TYPE
+          return STATUS_TYPE;
+        case 2: // STATUS_DETAIL
+          return STATUS_DETAIL;
+        case 3: // MESSAGE
+          return MESSAGE;
         default:
           return null;
       }
@@ -117,13 +168,16 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
   }
 
   // isset id assignments
+  private _Fields optionals[] = {_Fields.STATUS_DETAIL,_Fields.MESSAGE};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.MESSAGE_STATUS, new org.apache.thrift.meta_data.FieldMetaData("messageStatus", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, MessageStatus.class)));
-    tmpMap.put(_Fields.BODY_TYPE, new org.apache.thrift.meta_data.FieldMetaData("bodyType", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageBodyType.class)));
+    tmpMap.put(_Fields.STATUS_TYPE, new org.apache.thrift.meta_data.FieldMetaData("statusType", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.STATUS_DETAIL, new org.apache.thrift.meta_data.FieldMetaData("statusDetail", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, MessageStatusType.class)));
+    tmpMap.put(_Fields.MESSAGE, new org.apache.thrift.meta_data.FieldMetaData("message", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(StatusMessage.class, metaDataMap);
   }
@@ -132,23 +186,24 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
   }
 
   public StatusMessage(
-    MessageStatus messageStatus,
-    MessageBodyType bodyType)
+    String statusType)
   {
     this();
-    this.messageStatus = messageStatus;
-    this.bodyType = bodyType;
+    this.statusType = statusType;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
   public StatusMessage(StatusMessage other) {
-    if (other.isSetMessageStatus()) {
-      this.messageStatus = new MessageStatus(other.messageStatus);
+    if (other.isSetStatusType()) {
+      this.statusType = other.statusType;
     }
-    if (other.isSetBodyType()) {
-      this.bodyType = other.bodyType;
+    if (other.isSetStatusDetail()) {
+      this.statusDetail = other.statusDetail;
+    }
+    if (other.isSetMessage()) {
+      this.message = other.message;
     }
   }
 
@@ -158,81 +213,160 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
 
   @Override
   public void clear() {
-    this.messageStatus = null;
-    this.bodyType = null;
+    this.statusType = null;
+    this.statusDetail = null;
+    this.message = null;
   }
 
-  public MessageStatus getMessageStatus() {
-    return this.messageStatus;
+  /**
+   * * If present, indicates the Result Part that is being collected.
+   *   see: MessageStatusType
+   * *
+   */
+  public String getStatusType() {
+    return this.statusType;
   }
 
-  public StatusMessage setMessageStatus(MessageStatus messageStatus) {
-    this.messageStatus = messageStatus;
+  /**
+   * * If present, indicates the Result Part that is being collected.
+   *   see: MessageStatusType
+   * *
+   */
+  public StatusMessage setStatusType(String statusType) {
+    this.statusType = statusType;
     return this;
   }
 
-  public void unsetMessageStatus() {
-    this.messageStatus = null;
+  public void unsetStatusType() {
+    this.statusType = null;
   }
 
-  /** Returns true if field messageStatus is set (has been assigned a value) and false otherwise */
-  public boolean isSetMessageStatus() {
-    return this.messageStatus != null;
+  /** Returns true if field statusType is set (has been assigned a value) and false otherwise */
+  public boolean isSetStatusType() {
+    return this.statusType != null;
   }
 
-  public void setMessageStatusIsSet(boolean value) {
+  public void setStatusTypeIsSet(boolean value) {
     if (!value) {
-      this.messageStatus = null;
+      this.statusType = null;
     }
   }
 
   /**
+   * * A field for additional information about this status in a
+   *   machine-readable format. Contents of the Status Detail field
+   *   consist of zero or more name-value pairs. (The details of how
+   *   these name-value pairs are structured in a particular message
+   *   binding are provided in the appropriate TAXII Message Binding
+   *   Specification.) The individual Status Types indicate the
+   *   standard names and appropriate values for this these sun-
+   *   fields (if any). Values may consist of structured content. Third
+   *   parties MAY define their own Status Detail sub-fields.
+   *   Internal key value pair struct is being used here.
+   * *
    * 
-   * @see MessageBodyType
+   * @see MessageStatusType
    */
-  public MessageBodyType getBodyType() {
-    return this.bodyType;
+  public MessageStatusType getStatusDetail() {
+    return this.statusDetail;
   }
 
   /**
+   * * A field for additional information about this status in a
+   *   machine-readable format. Contents of the Status Detail field
+   *   consist of zero or more name-value pairs. (The details of how
+   *   these name-value pairs are structured in a particular message
+   *   binding are provided in the appropriate TAXII Message Binding
+   *   Specification.) The individual Status Types indicate the
+   *   standard names and appropriate values for this these sun-
+   *   fields (if any). Values may consist of structured content. Third
+   *   parties MAY define their own Status Detail sub-fields.
+   *   Internal key value pair struct is being used here.
+   * *
    * 
-   * @see MessageBodyType
+   * @see MessageStatusType
    */
-  public StatusMessage setBodyType(MessageBodyType bodyType) {
-    this.bodyType = bodyType;
+  public StatusMessage setStatusDetail(MessageStatusType statusDetail) {
+    this.statusDetail = statusDetail;
     return this;
   }
 
-  public void unsetBodyType() {
-    this.bodyType = null;
+  public void unsetStatusDetail() {
+    this.statusDetail = null;
   }
 
-  /** Returns true if field bodyType is set (has been assigned a value) and false otherwise */
-  public boolean isSetBodyType() {
-    return this.bodyType != null;
+  /** Returns true if field statusDetail is set (has been assigned a value) and false otherwise */
+  public boolean isSetStatusDetail() {
+    return this.statusDetail != null;
   }
 
-  public void setBodyTypeIsSet(boolean value) {
+  public void setStatusDetailIsSet(boolean value) {
     if (!value) {
-      this.bodyType = null;
+      this.statusDetail = null;
+    }
+  }
+
+  /**
+   * * Additional information for the status. There is no expectation
+   *   that this field be interpretable by a machine; it is instead
+   *   targeted to a human operator.
+   * 
+   * *
+   */
+  public String getMessage() {
+    return this.message;
+  }
+
+  /**
+   * * Additional information for the status. There is no expectation
+   *   that this field be interpretable by a machine; it is instead
+   *   targeted to a human operator.
+   * 
+   * *
+   */
+  public StatusMessage setMessage(String message) {
+    this.message = message;
+    return this;
+  }
+
+  public void unsetMessage() {
+    this.message = null;
+  }
+
+  /** Returns true if field message is set (has been assigned a value) and false otherwise */
+  public boolean isSetMessage() {
+    return this.message != null;
+  }
+
+  public void setMessageIsSet(boolean value) {
+    if (!value) {
+      this.message = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case MESSAGE_STATUS:
+    case STATUS_TYPE:
       if (value == null) {
-        unsetMessageStatus();
+        unsetStatusType();
       } else {
-        setMessageStatus((MessageStatus)value);
+        setStatusType((String)value);
       }
       break;
 
-    case BODY_TYPE:
+    case STATUS_DETAIL:
       if (value == null) {
-        unsetBodyType();
+        unsetStatusDetail();
       } else {
-        setBodyType((MessageBodyType)value);
+        setStatusDetail((MessageStatusType)value);
+      }
+      break;
+
+    case MESSAGE:
+      if (value == null) {
+        unsetMessage();
+      } else {
+        setMessage((String)value);
       }
       break;
 
@@ -241,11 +375,14 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case MESSAGE_STATUS:
-      return getMessageStatus();
+    case STATUS_TYPE:
+      return getStatusType();
 
-    case BODY_TYPE:
-      return getBodyType();
+    case STATUS_DETAIL:
+      return getStatusDetail();
+
+    case MESSAGE:
+      return getMessage();
 
     }
     throw new IllegalStateException();
@@ -258,10 +395,12 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
     }
 
     switch (field) {
-    case MESSAGE_STATUS:
-      return isSetMessageStatus();
-    case BODY_TYPE:
-      return isSetBodyType();
+    case STATUS_TYPE:
+      return isSetStatusType();
+    case STATUS_DETAIL:
+      return isSetStatusDetail();
+    case MESSAGE:
+      return isSetMessage();
     }
     throw new IllegalStateException();
   }
@@ -279,21 +418,30 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
     if (that == null)
       return false;
 
-    boolean this_present_messageStatus = true && this.isSetMessageStatus();
-    boolean that_present_messageStatus = true && that.isSetMessageStatus();
-    if (this_present_messageStatus || that_present_messageStatus) {
-      if (!(this_present_messageStatus && that_present_messageStatus))
+    boolean this_present_statusType = true && this.isSetStatusType();
+    boolean that_present_statusType = true && that.isSetStatusType();
+    if (this_present_statusType || that_present_statusType) {
+      if (!(this_present_statusType && that_present_statusType))
         return false;
-      if (!this.messageStatus.equals(that.messageStatus))
+      if (!this.statusType.equals(that.statusType))
         return false;
     }
 
-    boolean this_present_bodyType = true && this.isSetBodyType();
-    boolean that_present_bodyType = true && that.isSetBodyType();
-    if (this_present_bodyType || that_present_bodyType) {
-      if (!(this_present_bodyType && that_present_bodyType))
+    boolean this_present_statusDetail = true && this.isSetStatusDetail();
+    boolean that_present_statusDetail = true && that.isSetStatusDetail();
+    if (this_present_statusDetail || that_present_statusDetail) {
+      if (!(this_present_statusDetail && that_present_statusDetail))
         return false;
-      if (!this.bodyType.equals(that.bodyType))
+      if (!this.statusDetail.equals(that.statusDetail))
+        return false;
+    }
+
+    boolean this_present_message = true && this.isSetMessage();
+    boolean that_present_message = true && that.isSetMessage();
+    if (this_present_message || that_present_message) {
+      if (!(this_present_message && that_present_message))
+        return false;
+      if (!this.message.equals(that.message))
         return false;
     }
 
@@ -313,22 +461,32 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetMessageStatus()).compareTo(other.isSetMessageStatus());
+    lastComparison = Boolean.valueOf(isSetStatusType()).compareTo(other.isSetStatusType());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMessageStatus()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.messageStatus, other.messageStatus);
+    if (isSetStatusType()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.statusType, other.statusType);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetBodyType()).compareTo(other.isSetBodyType());
+    lastComparison = Boolean.valueOf(isSetStatusDetail()).compareTo(other.isSetStatusDetail());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetBodyType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.bodyType, other.bodyType);
+    if (isSetStatusDetail()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.statusDetail, other.statusDetail);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetMessage()).compareTo(other.isSetMessage());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetMessage()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.message, other.message);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -353,37 +511,43 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
     StringBuilder sb = new StringBuilder("StatusMessage(");
     boolean first = true;
 
-    sb.append("messageStatus:");
-    if (this.messageStatus == null) {
+    sb.append("statusType:");
+    if (this.statusType == null) {
       sb.append("null");
     } else {
-      sb.append(this.messageStatus);
+      sb.append(this.statusType);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("bodyType:");
-    if (this.bodyType == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.bodyType);
+    if (isSetStatusDetail()) {
+      if (!first) sb.append(", ");
+      sb.append("statusDetail:");
+      if (this.statusDetail == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.statusDetail);
+      }
+      first = false;
     }
-    first = false;
+    if (isSetMessage()) {
+      if (!first) sb.append(", ");
+      sb.append("message:");
+      if (this.message == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.message);
+      }
+      first = false;
+    }
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (messageStatus == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'messageStatus' was not present! Struct: " + toString());
-    }
-    if (bodyType == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'bodyType' was not present! Struct: " + toString());
+    if (statusType == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'statusType' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
-    if (messageStatus != null) {
-      messageStatus.validate();
-    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -420,19 +584,26 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
           break;
         }
         switch (schemeField.id) {
-          case 1: // MESSAGE_STATUS
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.messageStatus = new MessageStatus();
-              struct.messageStatus.read(iprot);
-              struct.setMessageStatusIsSet(true);
+          case 1: // STATUS_TYPE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.statusType = iprot.readString();
+              struct.setStatusTypeIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // BODY_TYPE
+          case 2: // STATUS_DETAIL
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.bodyType = MessageBodyType.findByValue(iprot.readI32());
-              struct.setBodyTypeIsSet(true);
+              struct.statusDetail = MessageStatusType.findByValue(iprot.readI32());
+              struct.setStatusDetailIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // MESSAGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.message = iprot.readString();
+              struct.setMessageIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -452,15 +623,24 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.messageStatus != null) {
-        oprot.writeFieldBegin(MESSAGE_STATUS_FIELD_DESC);
-        struct.messageStatus.write(oprot);
+      if (struct.statusType != null) {
+        oprot.writeFieldBegin(STATUS_TYPE_FIELD_DESC);
+        oprot.writeString(struct.statusType);
         oprot.writeFieldEnd();
       }
-      if (struct.bodyType != null) {
-        oprot.writeFieldBegin(BODY_TYPE_FIELD_DESC);
-        oprot.writeI32(struct.bodyType.getValue());
-        oprot.writeFieldEnd();
+      if (struct.statusDetail != null) {
+        if (struct.isSetStatusDetail()) {
+          oprot.writeFieldBegin(STATUS_DETAIL_FIELD_DESC);
+          oprot.writeI32(struct.statusDetail.getValue());
+          oprot.writeFieldEnd();
+        }
+      }
+      if (struct.message != null) {
+        if (struct.isSetMessage()) {
+          oprot.writeFieldBegin(MESSAGE_FIELD_DESC);
+          oprot.writeString(struct.message);
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -479,18 +659,37 @@ public class StatusMessage implements org.apache.thrift.TBase<StatusMessage, Sta
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, StatusMessage struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.messageStatus.write(oprot);
-      oprot.writeI32(struct.bodyType.getValue());
+      oprot.writeString(struct.statusType);
+      BitSet optionals = new BitSet();
+      if (struct.isSetStatusDetail()) {
+        optionals.set(0);
+      }
+      if (struct.isSetMessage()) {
+        optionals.set(1);
+      }
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetStatusDetail()) {
+        oprot.writeI32(struct.statusDetail.getValue());
+      }
+      if (struct.isSetMessage()) {
+        oprot.writeString(struct.message);
+      }
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, StatusMessage struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.messageStatus = new MessageStatus();
-      struct.messageStatus.read(iprot);
-      struct.setMessageStatusIsSet(true);
-      struct.bodyType = MessageBodyType.findByValue(iprot.readI32());
-      struct.setBodyTypeIsSet(true);
+      struct.statusType = iprot.readString();
+      struct.setStatusTypeIsSet(true);
+      BitSet incoming = iprot.readBitSet(2);
+      if (incoming.get(0)) {
+        struct.statusDetail = MessageStatusType.findByValue(iprot.readI32());
+        struct.setStatusDetailIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.message = iprot.readString();
+        struct.setMessageIsSet(true);
+      }
     }
   }
 

@@ -463,13 +463,13 @@ public class ContentBinding implements org.apache.thrift.TBase<ContentBinding, C
           case 2: // SUB_TYPE
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set168 = iprot.readSetBegin();
-                struct.subType = new HashSet<String>(2*_set168.size);
-                for (int _i169 = 0; _i169 < _set168.size; ++_i169)
+                org.apache.thrift.protocol.TSet _set0 = iprot.readSetBegin();
+                struct.subType = new HashSet<String>(2*_set0.size);
+                for (int _i1 = 0; _i1 < _set0.size; ++_i1)
                 {
-                  String _elem170;
-                  _elem170 = iprot.readString();
-                  struct.subType.add(_elem170);
+                  String _elem2;
+                  _elem2 = iprot.readString();
+                  struct.subType.add(_elem2);
                 }
                 iprot.readSetEnd();
               }
@@ -503,9 +503,9 @@ public class ContentBinding implements org.apache.thrift.TBase<ContentBinding, C
           oprot.writeFieldBegin(SUB_TYPE_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, struct.subType.size()));
-            for (String _iter171 : struct.subType)
+            for (String _iter3 : struct.subType)
             {
-              oprot.writeString(_iter171);
+              oprot.writeString(_iter3);
             }
             oprot.writeSetEnd();
           }
@@ -538,9 +538,9 @@ public class ContentBinding implements org.apache.thrift.TBase<ContentBinding, C
       if (struct.isSetSubType()) {
         {
           oprot.writeI32(struct.subType.size());
-          for (String _iter172 : struct.subType)
+          for (String _iter4 : struct.subType)
           {
-            oprot.writeString(_iter172);
+            oprot.writeString(_iter4);
           }
         }
       }
@@ -554,13 +554,13 @@ public class ContentBinding implements org.apache.thrift.TBase<ContentBinding, C
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TSet _set173 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-          struct.subType = new HashSet<String>(2*_set173.size);
-          for (int _i174 = 0; _i174 < _set173.size; ++_i174)
+          org.apache.thrift.protocol.TSet _set5 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+          struct.subType = new HashSet<String>(2*_set5.size);
+          for (int _i6 = 0; _i6 < _set5.size; ++_i6)
           {
-            String _elem175;
-            _elem175 = iprot.readString();
-            struct.subType.add(_elem175);
+            String _elem7;
+            _elem7 = iprot.readString();
+            struct.subType.add(_elem7);
           }
         }
         struct.setSubTypeIsSet(true);

@@ -550,14 +550,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           case 3: // ALLOWED_SERVICES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list48 = iprot.readListBegin();
-                struct.allowedServices = new ArrayList<ServiceInstance>(_list48.size);
-                for (int _i49 = 0; _i49 < _list48.size; ++_i49)
+                org.apache.thrift.protocol.TList _list56 = iprot.readListBegin();
+                struct.allowedServices = new ArrayList<ServiceInstance>(_list56.size);
+                for (int _i57 = 0; _i57 < _list56.size; ++_i57)
                 {
-                  ServiceInstance _elem50;
-                  _elem50 = new ServiceInstance();
-                  _elem50.read(iprot);
-                  struct.allowedServices.add(_elem50);
+                  ServiceInstance _elem58;
+                  _elem58 = new ServiceInstance();
+                  _elem58.read(iprot);
+                  struct.allowedServices.add(_elem58);
                 }
                 iprot.readListEnd();
               }
@@ -598,9 +598,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
           oprot.writeFieldBegin(ALLOWED_SERVICES_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.allowedServices.size()));
-            for (ServiceInstance _iter51 : struct.allowedServices)
+            for (ServiceInstance _iter59 : struct.allowedServices)
             {
-              _iter51.write(oprot);
+              _iter59.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -639,9 +639,9 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       if (struct.isSetAllowedServices()) {
         {
           oprot.writeI32(struct.allowedServices.size());
-          for (ServiceInstance _iter52 : struct.allowedServices)
+          for (ServiceInstance _iter60 : struct.allowedServices)
           {
-            _iter52.write(oprot);
+            _iter60.write(oprot);
           }
         }
       }
@@ -660,14 +660,14 @@ public class DiscoveryResponse implements org.apache.thrift.TBase<DiscoveryRespo
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list53 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.allowedServices = new ArrayList<ServiceInstance>(_list53.size);
-          for (int _i54 = 0; _i54 < _list53.size; ++_i54)
+          org.apache.thrift.protocol.TList _list61 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.allowedServices = new ArrayList<ServiceInstance>(_list61.size);
+          for (int _i62 = 0; _i62 < _list61.size; ++_i62)
           {
-            ServiceInstance _elem55;
-            _elem55 = new ServiceInstance();
-            _elem55.read(iprot);
-            struct.allowedServices.add(_elem55);
+            ServiceInstance _elem63;
+            _elem63 = new ServiceInstance();
+            _elem63.read(iprot);
+            struct.allowedServices.add(_elem63);
           }
         }
         struct.setAllowedServicesIsSet(true);

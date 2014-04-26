@@ -98,7 +98,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
    *   returned.
    * *
    */
-  public SubscriptionDeliveryParameter deliveryParameter; // optional
+  public DeliveryParameter deliveryParameter; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -227,7 +227,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
     tmpMap.put(_Fields.SUBSCRIPTION_PARAMETER, new org.apache.thrift.meta_data.FieldMetaData("subscriptionParameter", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SubscriptionParameter.class)));
     tmpMap.put(_Fields.DELIVERY_PARAMETER, new org.apache.thrift.meta_data.FieldMetaData("deliveryParameter", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SubscriptionDeliveryParameter.class)));
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, DeliveryParameter.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ManageCollectionSubscriptionRequest.class, metaDataMap);
   }
@@ -261,7 +261,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
       this.subscriptionParameter = new SubscriptionParameter(other.subscriptionParameter);
     }
     if (other.isSetDeliveryParameter()) {
-      this.deliveryParameter = new SubscriptionDeliveryParameter(other.deliveryParameter);
+      this.deliveryParameter = new DeliveryParameter(other.deliveryParameter);
     }
   }
 
@@ -447,7 +447,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
    *   returned.
    * *
    */
-  public SubscriptionDeliveryParameter getDeliveryParameter() {
+  public DeliveryParameter getDeliveryParameter() {
     return this.deliveryParameter;
   }
 
@@ -464,7 +464,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
    *   returned.
    * *
    */
-  public ManageCollectionSubscriptionRequest setDeliveryParameter(SubscriptionDeliveryParameter deliveryParameter) {
+  public ManageCollectionSubscriptionRequest setDeliveryParameter(DeliveryParameter deliveryParameter) {
     this.deliveryParameter = deliveryParameter;
     return this;
   }
@@ -522,7 +522,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
       if (value == null) {
         unsetDeliveryParameter();
       } else {
-        setDeliveryParameter((SubscriptionDeliveryParameter)value);
+        setDeliveryParameter((DeliveryParameter)value);
       }
       break;
 
@@ -850,7 +850,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
             break;
           case 5: // DELIVERY_PARAMETER
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.deliveryParameter = new SubscriptionDeliveryParameter();
+              struct.deliveryParameter = new DeliveryParameter();
               struct.deliveryParameter.read(iprot);
               struct.setDeliveryParameterIsSet(true);
             } else { 
@@ -962,7 +962,7 @@ public class ManageCollectionSubscriptionRequest implements org.apache.thrift.TB
         struct.setSubscriptionParameterIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.deliveryParameter = new SubscriptionDeliveryParameter();
+        struct.deliveryParameter = new DeliveryParameter();
         struct.deliveryParameter.read(iprot);
         struct.setDeliveryParameterIsSet(true);
       }

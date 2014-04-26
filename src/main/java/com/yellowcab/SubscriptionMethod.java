@@ -617,13 +617,13 @@ public class SubscriptionMethod implements org.apache.thrift.TBase<SubscriptionM
           case 3: // SUBSCRIPTION_MESSAGE_BINDINGS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set88 = iprot.readSetBegin();
-                struct.subscriptionMessageBindings = new HashSet<String>(2*_set88.size);
-                for (int _i89 = 0; _i89 < _set88.size; ++_i89)
+                org.apache.thrift.protocol.TSet _set96 = iprot.readSetBegin();
+                struct.subscriptionMessageBindings = new HashSet<String>(2*_set96.size);
+                for (int _i97 = 0; _i97 < _set96.size; ++_i97)
                 {
-                  String _elem90;
-                  _elem90 = iprot.readString();
-                  struct.subscriptionMessageBindings.add(_elem90);
+                  String _elem98;
+                  _elem98 = iprot.readString();
+                  struct.subscriptionMessageBindings.add(_elem98);
                 }
                 iprot.readSetEnd();
               }
@@ -661,9 +661,9 @@ public class SubscriptionMethod implements org.apache.thrift.TBase<SubscriptionM
         oprot.writeFieldBegin(SUBSCRIPTION_MESSAGE_BINDINGS_FIELD_DESC);
         {
           oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, struct.subscriptionMessageBindings.size()));
-          for (String _iter91 : struct.subscriptionMessageBindings)
+          for (String _iter99 : struct.subscriptionMessageBindings)
           {
-            oprot.writeString(_iter91);
+            oprot.writeString(_iter99);
           }
           oprot.writeSetEnd();
         }
@@ -690,9 +690,9 @@ public class SubscriptionMethod implements org.apache.thrift.TBase<SubscriptionM
       oprot.writeString(struct.subscriptionAddress);
       {
         oprot.writeI32(struct.subscriptionMessageBindings.size());
-        for (String _iter92 : struct.subscriptionMessageBindings)
+        for (String _iter100 : struct.subscriptionMessageBindings)
         {
-          oprot.writeString(_iter92);
+          oprot.writeString(_iter100);
         }
       }
     }
@@ -705,13 +705,13 @@ public class SubscriptionMethod implements org.apache.thrift.TBase<SubscriptionM
       struct.subscriptionAddress = iprot.readString();
       struct.setSubscriptionAddressIsSet(true);
       {
-        org.apache.thrift.protocol.TSet _set93 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.subscriptionMessageBindings = new HashSet<String>(2*_set93.size);
-        for (int _i94 = 0; _i94 < _set93.size; ++_i94)
+        org.apache.thrift.protocol.TSet _set101 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.subscriptionMessageBindings = new HashSet<String>(2*_set101.size);
+        for (int _i102 = 0; _i102 < _set101.size; ++_i102)
         {
-          String _elem95;
-          _elem95 = iprot.readString();
-          struct.subscriptionMessageBindings.add(_elem95);
+          String _elem103;
+          _elem103 = iprot.readString();
+          struct.subscriptionMessageBindings.add(_elem103);
         }
       }
       struct.setSubscriptionMessageBindingsIsSet(true);

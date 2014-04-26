@@ -544,14 +544,14 @@ public class CollectionInformationResponse implements org.apache.thrift.TBase<Co
           case 3: // COLLECTION_INFORMATIONS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list160 = iprot.readListBegin();
-                struct.collectionInformations = new ArrayList<CollectionInformation>(_list160.size);
-                for (int _i161 = 0; _i161 < _list160.size; ++_i161)
+                org.apache.thrift.protocol.TList _list168 = iprot.readListBegin();
+                struct.collectionInformations = new ArrayList<CollectionInformation>(_list168.size);
+                for (int _i169 = 0; _i169 < _list168.size; ++_i169)
                 {
-                  CollectionInformation _elem162;
-                  _elem162 = new CollectionInformation();
-                  _elem162.read(iprot);
-                  struct.collectionInformations.add(_elem162);
+                  CollectionInformation _elem170;
+                  _elem170 = new CollectionInformation();
+                  _elem170.read(iprot);
+                  struct.collectionInformations.add(_elem170);
                 }
                 iprot.readListEnd();
               }
@@ -592,9 +592,9 @@ public class CollectionInformationResponse implements org.apache.thrift.TBase<Co
           oprot.writeFieldBegin(COLLECTION_INFORMATIONS_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.collectionInformations.size()));
-            for (CollectionInformation _iter163 : struct.collectionInformations)
+            for (CollectionInformation _iter171 : struct.collectionInformations)
             {
-              _iter163.write(oprot);
+              _iter171.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -633,9 +633,9 @@ public class CollectionInformationResponse implements org.apache.thrift.TBase<Co
       if (struct.isSetCollectionInformations()) {
         {
           oprot.writeI32(struct.collectionInformations.size());
-          for (CollectionInformation _iter164 : struct.collectionInformations)
+          for (CollectionInformation _iter172 : struct.collectionInformations)
           {
-            _iter164.write(oprot);
+            _iter172.write(oprot);
           }
         }
       }
@@ -654,14 +654,14 @@ public class CollectionInformationResponse implements org.apache.thrift.TBase<Co
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TList _list165 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.collectionInformations = new ArrayList<CollectionInformation>(_list165.size);
-          for (int _i166 = 0; _i166 < _list165.size; ++_i166)
+          org.apache.thrift.protocol.TList _list173 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.collectionInformations = new ArrayList<CollectionInformation>(_list173.size);
+          for (int _i174 = 0; _i174 < _list173.size; ++_i174)
           {
-            CollectionInformation _elem167;
-            _elem167 = new CollectionInformation();
-            _elem167.read(iprot);
-            struct.collectionInformations.add(_elem167);
+            CollectionInformation _elem175;
+            _elem175 = new CollectionInformation();
+            _elem175.read(iprot);
+            struct.collectionInformations.add(_elem175);
           }
         }
         struct.setCollectionInformationsIsSet(true);

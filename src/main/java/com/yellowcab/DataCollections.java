@@ -337,14 +337,14 @@ public class DataCollections implements org.apache.thrift.TBase<DataCollections,
           case 1: // FEED_INFORMATION
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set152 = iprot.readSetBegin();
-                struct.feedInformation = new HashSet<CollectionInformation>(2*_set152.size);
-                for (int _i153 = 0; _i153 < _set152.size; ++_i153)
+                org.apache.thrift.protocol.TSet _set160 = iprot.readSetBegin();
+                struct.feedInformation = new HashSet<CollectionInformation>(2*_set160.size);
+                for (int _i161 = 0; _i161 < _set160.size; ++_i161)
                 {
-                  CollectionInformation _elem154;
-                  _elem154 = new CollectionInformation();
-                  _elem154.read(iprot);
-                  struct.feedInformation.add(_elem154);
+                  CollectionInformation _elem162;
+                  _elem162 = new CollectionInformation();
+                  _elem162.read(iprot);
+                  struct.feedInformation.add(_elem162);
                 }
                 iprot.readSetEnd();
               }
@@ -373,9 +373,9 @@ public class DataCollections implements org.apache.thrift.TBase<DataCollections,
           oprot.writeFieldBegin(FEED_INFORMATION_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.feedInformation.size()));
-            for (CollectionInformation _iter155 : struct.feedInformation)
+            for (CollectionInformation _iter163 : struct.feedInformation)
             {
-              _iter155.write(oprot);
+              _iter163.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -407,9 +407,9 @@ public class DataCollections implements org.apache.thrift.TBase<DataCollections,
       if (struct.isSetFeedInformation()) {
         {
           oprot.writeI32(struct.feedInformation.size());
-          for (CollectionInformation _iter156 : struct.feedInformation)
+          for (CollectionInformation _iter164 : struct.feedInformation)
           {
-            _iter156.write(oprot);
+            _iter164.write(oprot);
           }
         }
       }
@@ -421,14 +421,14 @@ public class DataCollections implements org.apache.thrift.TBase<DataCollections,
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TSet _set157 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.feedInformation = new HashSet<CollectionInformation>(2*_set157.size);
-          for (int _i158 = 0; _i158 < _set157.size; ++_i158)
+          org.apache.thrift.protocol.TSet _set165 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.feedInformation = new HashSet<CollectionInformation>(2*_set165.size);
+          for (int _i166 = 0; _i166 < _set165.size; ++_i166)
           {
-            CollectionInformation _elem159;
-            _elem159 = new CollectionInformation();
-            _elem159.read(iprot);
-            struct.feedInformation.add(_elem159);
+            CollectionInformation _elem167;
+            _elem167 = new CollectionInformation();
+            _elem167.read(iprot);
+            struct.feedInformation.add(_elem167);
           }
         }
         struct.setFeedInformationIsSet(true);

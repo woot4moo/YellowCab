@@ -755,13 +755,13 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
           case 3: // INBOX_MESSAGE_BINDINGS
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set96 = iprot.readSetBegin();
-                struct.inboxMessageBindings = new HashSet<String>(2*_set96.size);
-                for (int _i97 = 0; _i97 < _set96.size; ++_i97)
+                org.apache.thrift.protocol.TSet _set104 = iprot.readSetBegin();
+                struct.inboxMessageBindings = new HashSet<String>(2*_set104.size);
+                for (int _i105 = 0; _i105 < _set104.size; ++_i105)
                 {
-                  String _elem98;
-                  _elem98 = iprot.readString();
-                  struct.inboxMessageBindings.add(_elem98);
+                  String _elem106;
+                  _elem106 = iprot.readString();
+                  struct.inboxMessageBindings.add(_elem106);
                 }
                 iprot.readSetEnd();
               }
@@ -773,14 +773,14 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
           case 4: // SUPPORT_CONTENT
             if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
               {
-                org.apache.thrift.protocol.TSet _set99 = iprot.readSetBegin();
-                struct.supportContent = new HashSet<SupportedContent>(2*_set99.size);
-                for (int _i100 = 0; _i100 < _set99.size; ++_i100)
+                org.apache.thrift.protocol.TSet _set107 = iprot.readSetBegin();
+                struct.supportContent = new HashSet<SupportedContent>(2*_set107.size);
+                for (int _i108 = 0; _i108 < _set107.size; ++_i108)
                 {
-                  SupportedContent _elem101;
-                  _elem101 = new SupportedContent();
-                  _elem101.read(iprot);
-                  struct.supportContent.add(_elem101);
+                  SupportedContent _elem109;
+                  _elem109 = new SupportedContent();
+                  _elem109.read(iprot);
+                  struct.supportContent.add(_elem109);
                 }
                 iprot.readSetEnd();
               }
@@ -818,9 +818,9 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
         oprot.writeFieldBegin(INBOX_MESSAGE_BINDINGS_FIELD_DESC);
         {
           oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, struct.inboxMessageBindings.size()));
-          for (String _iter102 : struct.inboxMessageBindings)
+          for (String _iter110 : struct.inboxMessageBindings)
           {
-            oprot.writeString(_iter102);
+            oprot.writeString(_iter110);
           }
           oprot.writeSetEnd();
         }
@@ -831,9 +831,9 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
           oprot.writeFieldBegin(SUPPORT_CONTENT_FIELD_DESC);
           {
             oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, struct.supportContent.size()));
-            for (SupportedContent _iter103 : struct.supportContent)
+            for (SupportedContent _iter111 : struct.supportContent)
             {
-              _iter103.write(oprot);
+              _iter111.write(oprot);
             }
             oprot.writeSetEnd();
           }
@@ -861,9 +861,9 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
       oprot.writeString(struct.inboxAddress);
       {
         oprot.writeI32(struct.inboxMessageBindings.size());
-        for (String _iter104 : struct.inboxMessageBindings)
+        for (String _iter112 : struct.inboxMessageBindings)
         {
-          oprot.writeString(_iter104);
+          oprot.writeString(_iter112);
         }
       }
       BitSet optionals = new BitSet();
@@ -874,9 +874,9 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
       if (struct.isSetSupportContent()) {
         {
           oprot.writeI32(struct.supportContent.size());
-          for (SupportedContent _iter105 : struct.supportContent)
+          for (SupportedContent _iter113 : struct.supportContent)
           {
-            _iter105.write(oprot);
+            _iter113.write(oprot);
           }
         }
       }
@@ -890,27 +890,27 @@ public class ReceivingInboxService implements org.apache.thrift.TBase<ReceivingI
       struct.inboxAddress = iprot.readString();
       struct.setInboxAddressIsSet(true);
       {
-        org.apache.thrift.protocol.TSet _set106 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.inboxMessageBindings = new HashSet<String>(2*_set106.size);
-        for (int _i107 = 0; _i107 < _set106.size; ++_i107)
+        org.apache.thrift.protocol.TSet _set114 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.inboxMessageBindings = new HashSet<String>(2*_set114.size);
+        for (int _i115 = 0; _i115 < _set114.size; ++_i115)
         {
-          String _elem108;
-          _elem108 = iprot.readString();
-          struct.inboxMessageBindings.add(_elem108);
+          String _elem116;
+          _elem116 = iprot.readString();
+          struct.inboxMessageBindings.add(_elem116);
         }
       }
       struct.setInboxMessageBindingsIsSet(true);
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TSet _set109 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.supportContent = new HashSet<SupportedContent>(2*_set109.size);
-          for (int _i110 = 0; _i110 < _set109.size; ++_i110)
+          org.apache.thrift.protocol.TSet _set117 = new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.supportContent = new HashSet<SupportedContent>(2*_set117.size);
+          for (int _i118 = 0; _i118 < _set117.size; ++_i118)
           {
-            SupportedContent _elem111;
-            _elem111 = new SupportedContent();
-            _elem111.read(iprot);
-            struct.supportContent.add(_elem111);
+            SupportedContent _elem119;
+            _elem119 = new SupportedContent();
+            _elem119.read(iprot);
+            struct.supportContent.add(_elem119);
           }
         }
         struct.setSupportContentIsSet(true);

@@ -85,7 +85,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
    * 
    * *
    */
-  public SubscriptionDeliveryParameter subscriptionDeliveryParameter; // optional
+  public DeliveryParameter subscriptionDeliveryParameter; // optional
   /**
    *     * Each Poll Instance represents an instance of a Poll
    *       Service that can be contacted to retrieve content
@@ -227,7 +227,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
     tmpMap.put(_Fields.SUBSCRIPTION_PARAMETER, new org.apache.thrift.meta_data.FieldMetaData("subscriptionParameter", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SubscriptionParameter.class)));
     tmpMap.put(_Fields.SUBSCRIPTION_DELIVERY_PARAMETER, new org.apache.thrift.meta_data.FieldMetaData("subscriptionDeliveryParameter", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, SubscriptionDeliveryParameter.class)));
+        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, DeliveryParameter.class)));
     tmpMap.put(_Fields.POLLING_INSTANCES, new org.apache.thrift.meta_data.FieldMetaData("pollingInstances", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.SetMetaData(org.apache.thrift.protocol.TType.SET, 
             new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, PollingInstance.class))));
@@ -259,7 +259,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
       this.subscriptionParameter = new SubscriptionParameter(other.subscriptionParameter);
     }
     if (other.isSetSubscriptionDeliveryParameter()) {
-      this.subscriptionDeliveryParameter = new SubscriptionDeliveryParameter(other.subscriptionDeliveryParameter);
+      this.subscriptionDeliveryParameter = new DeliveryParameter(other.subscriptionDeliveryParameter);
     }
     if (other.isSetPollingInstances()) {
       Set<PollingInstance> __this__pollingInstances = new HashSet<PollingInstance>(other.pollingInstances.size());
@@ -405,7 +405,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
    * 
    * *
    */
-  public SubscriptionDeliveryParameter getSubscriptionDeliveryParameter() {
+  public DeliveryParameter getSubscriptionDeliveryParameter() {
     return this.subscriptionDeliveryParameter;
   }
 
@@ -421,7 +421,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
    * 
    * *
    */
-  public SubscriptionInstance setSubscriptionDeliveryParameter(SubscriptionDeliveryParameter subscriptionDeliveryParameter) {
+  public SubscriptionInstance setSubscriptionDeliveryParameter(DeliveryParameter subscriptionDeliveryParameter) {
     this.subscriptionDeliveryParameter = subscriptionDeliveryParameter;
     return this;
   }
@@ -536,7 +536,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
       if (value == null) {
         unsetSubscriptionDeliveryParameter();
       } else {
-        setSubscriptionDeliveryParameter((SubscriptionDeliveryParameter)value);
+        setSubscriptionDeliveryParameter((DeliveryParameter)value);
       }
       break;
 
@@ -863,7 +863,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
             break;
           case 4: // SUBSCRIPTION_DELIVERY_PARAMETER
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.subscriptionDeliveryParameter = new SubscriptionDeliveryParameter();
+              struct.subscriptionDeliveryParameter = new DeliveryParameter();
               struct.subscriptionDeliveryParameter.read(iprot);
               struct.setSubscriptionDeliveryParameterIsSet(true);
             } else { 
@@ -1012,7 +1012,7 @@ public class SubscriptionInstance implements org.apache.thrift.TBase<Subscriptio
         struct.setSubscriptionParameterIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.subscriptionDeliveryParameter = new SubscriptionDeliveryParameter();
+        struct.subscriptionDeliveryParameter = new DeliveryParameter();
         struct.subscriptionDeliveryParameter.read(iprot);
         struct.setSubscriptionDeliveryParameterIsSet(true);
       }
